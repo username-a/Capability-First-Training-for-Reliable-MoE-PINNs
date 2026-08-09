@@ -1,0 +1,128 @@
+{
+  "seed": 43,
+  "grid": [
+    82,
+    83,
+    32
+  ],
+  "points": 217792,
+  "scenarios": {
+    "soft_gate": {
+      "relative_l2": 0.2628403902053833,
+      "rmse": 0.059127334505319595,
+      "max_absolute_error": 0.8189781308174133,
+      "l2_ratio_vs_soft": 1.0
+    },
+    "top1_hard_gate": {
+      "relative_l2": 0.29060786962509155,
+      "rmse": 0.06537351757287979,
+      "max_absolute_error": 0.9699081778526306,
+      "l2_ratio_vs_soft": 1.1056438829588207
+    },
+    "oracle_hard_gate": {
+      "relative_l2": 0.16883699595928192,
+      "rmse": 0.03798067569732666,
+      "max_absolute_error": 0.4569452702999115,
+      "l2_ratio_vs_soft": 0.6423555977350087
+    },
+    "uniform_average": {
+      "relative_l2": 0.5387442708015442,
+      "rmse": 0.12119259685277939,
+      "max_absolute_error": 0.6738553047180176,
+      "l2_ratio_vs_soft": 2.049701228873423
+    },
+    "gate_temperature_0.5": {
+      "relative_l2": 0.2763698995113373,
+      "rmse": 0.062170643359422684,
+      "max_absolute_error": 0.9218222498893738,
+      "l2_ratio_vs_soft": 1.0514742399194508
+    },
+    "gate_temperature_2": {
+      "relative_l2": 0.2796385884284973,
+      "rmse": 0.06290591508150101,
+      "max_absolute_error": 0.7222253680229187,
+      "l2_ratio_vs_soft": 1.0639102620795378
+    },
+    "permuted_gate": {
+      "relative_l2": 0.8797104358673096,
+      "rmse": 0.19789402186870575,
+      "max_absolute_error": 1.1036988496780396,
+      "l2_ratio_vs_soft": 3.3469377943774337
+    }
+  },
+  "drop_one_subnet": {
+    "subnet_1": {
+      "relative_l2": 0.702444314956665,
+      "rmse": 0.1580183207988739,
+      "max_absolute_error": 0.7457021474838257,
+      "soft_load_removed": 0.46488693356513977,
+      "l2_ratio_vs_soft": 2.672512829583671
+    },
+    "subnet_2": {
+      "relative_l2": 0.28688716888427734,
+      "rmse": 0.06453653424978256,
+      "max_absolute_error": 0.9698556065559387,
+      "soft_load_removed": 0.04095500707626343,
+      "l2_ratio_vs_soft": 1.0914881409972945
+    },
+    "subnet_3": {
+      "relative_l2": 0.25391295552253723,
+      "rmse": 0.057119037955999374,
+      "max_absolute_error": 0.818979799747467,
+      "soft_load_removed": 0.04040397331118584,
+      "l2_ratio_vs_soft": 0.9660347685685972
+    },
+    "subnet_4": {
+      "relative_l2": 0.8845081329345703,
+      "rmse": 0.19897474348545074,
+      "max_absolute_error": 1.5665167570114136,
+      "soft_load_removed": 0.4537540674209595,
+      "l2_ratio_vs_soft": 3.3651910661196944
+    }
+  },
+  "gate_logit_noise": {
+    "sigma_0.1": {
+      "relative_l2_mean": 0.2629764825105667,
+      "relative_l2_std": 0.00011888245766014773,
+      "relative_l2_max": 0.26311901211738586
+    },
+    "sigma_0.25": {
+      "relative_l2_mean": 0.2640006020665169,
+      "relative_l2_std": 0.00032030266287942367,
+      "relative_l2_max": 0.26433566212654114
+    },
+    "sigma_0.5": {
+      "relative_l2_mean": 0.2673906832933426,
+      "relative_l2_std": 0.0005749039480704094,
+      "relative_l2_max": 0.26840999722480774
+    }
+  },
+  "routed_region_diagnostics": {
+    "subnet_1": {
+      "points": 109624,
+      "load": 0.5033426284790039,
+      "branch_rmse": 0.07707348465919495,
+      "mixture_rmse": 0.060503557324409485,
+      "branch_pointwise_win_rate": 0.3050335645675659
+    },
+    "subnet_2": {
+      "points": 0,
+      "load": 0.0
+    },
+    "subnet_3": {
+      "points": 8653,
+      "load": 0.03973056748509407,
+      "branch_rmse": 0.037422116845846176,
+      "mixture_rmse": 0.029597444459795952,
+      "branch_pointwise_win_rate": 0.6343464851379395
+    },
+    "subnet_4": {
+      "points": 99515,
+      "load": 0.45692679286003113,
+      "branch_rmse": 0.05184214562177658,
+      "mixture_rmse": 0.05951886251568794,
+      "branch_pointwise_win_rate": 0.5007084608078003
+    }
+  },
+  "interpretation_guardrail": "Soft-over-hard improvement establishes dependence on convex mixing, but it is not by itself proof of pathological pseudo-fitting. Use seed stability, perturbation sensitivity, branch health, and extrapolation jointly."
+}

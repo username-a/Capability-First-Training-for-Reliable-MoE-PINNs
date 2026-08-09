@@ -1,0 +1,5 @@
+- Mixture error alone does not certify reliable MoE--PINN branches.
+- Two composite protocols have comparable mixture error but different branch health.
+- Paired audits reveal a 37-fold contrast in worst complete-branch error.
+- Top-1 routing, gate flattening, and branch deletion expose aggregation dependence.
+- Allen--Cahn and APINN controls separate utilization, accuracy, and reliability.

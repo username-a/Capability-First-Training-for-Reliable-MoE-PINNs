@@ -1,0 +1,103 @@
+{
+  "seed": 42,
+  "grid": [
+    82,
+    83,
+    32
+  ],
+  "points": 217792,
+  "scenarios": {
+    "soft_gate": {
+      "relative_l2": 0.2108963131904602,
+      "rmse": 0.04744195193052292,
+      "max_absolute_error": 0.8232423067092896,
+      "l2_ratio_vs_soft": 1.0
+    },
+    "top1_hard_gate": {
+      "relative_l2": 0.5496019721031189,
+      "rmse": 0.1236351802945137,
+      "max_absolute_error": 1.4161301851272583,
+      "l2_ratio_vs_soft": 2.6060293031617583
+    },
+    "oracle_hard_gate": {
+      "relative_l2": 0.5265756249427795,
+      "rmse": 0.11845532059669495,
+      "max_absolute_error": 1.3487231731414795,
+      "l2_ratio_vs_soft": 2.496846042383063
+    },
+    "uniform_average": {
+      "relative_l2": 1.257421612739563,
+      "rmse": 0.2828617990016937,
+      "max_absolute_error": 1.2109023332595825,
+      "l2_ratio_vs_soft": 5.962274037498166
+    },
+    "gate_temperature_0.5": {
+      "relative_l2": 0.3547305464744568,
+      "rmse": 0.07979802042245865,
+      "max_absolute_error": 0.9281419515609741,
+      "l2_ratio_vs_soft": 1.6820139769541635
+    },
+    "gate_temperature_2": {
+      "relative_l2": 0.41032299399375916,
+      "rmse": 0.09230367839336395,
+      "max_absolute_error": 0.8356225490570068,
+      "l2_ratio_vs_soft": 1.945614827430373
+    },
+    "permuted_gate": {
+      "relative_l2": 2.537172794342041,
+      "rmse": 0.5707472562789917,
+      "max_absolute_error": 2.4786441326141357,
+      "l2_ratio_vs_soft": 12.030427445408794
+    }
+  },
+  "drop_one_subnet": {
+    "subnet_1": {
+      "relative_l2": 0.7002115249633789,
+      "rmse": 0.1575152575969696,
+      "max_absolute_error": 2.121140480041504,
+      "soft_load_removed": 0.29944127798080444,
+      "l2_ratio_vs_soft": 3.3201695865162835
+    },
+    "subnet_2": {
+      "relative_l2": 2.777400016784668,
+      "rmse": 0.6247888207435608,
+      "max_absolute_error": 2.626281261444092,
+      "soft_load_removed": 0.7005586624145508,
+      "l2_ratio_vs_soft": 13.16950483755684
+    }
+  },
+  "gate_logit_noise": {
+    "sigma_0.1": {
+      "relative_l2_mean": 0.21600809320807457,
+      "relative_l2_std": 0.00014978790056714456,
+      "relative_l2_max": 0.21618886291980743
+    },
+    "sigma_0.25": {
+      "relative_l2_mean": 0.24169017188251019,
+      "relative_l2_std": 0.00044852836355986707,
+      "relative_l2_max": 0.2425762116909027
+    },
+    "sigma_0.5": {
+      "relative_l2_mean": 0.32304123044013977,
+      "relative_l2_std": 0.00194641859888704,
+      "relative_l2_max": 0.32696330547332764
+    }
+  },
+  "routed_region_diagnostics": {
+    "subnet_1": {
+      "points": 61658,
+      "load": 0.2831049859523773,
+      "branch_rmse": 0.07354874163866043,
+      "mixture_rmse": 0.041544392704963684,
+      "branch_pointwise_win_rate": 0.15474066138267517
+    },
+    "subnet_2": {
+      "points": 156134,
+      "load": 0.7168950438499451,
+      "branch_rmse": 0.13851292431354523,
+      "mixture_rmse": 0.04957807436585426,
+      "branch_pointwise_win_rate": 0.22025951743125916
+    }
+  },
+  "interpretation_guardrail": "Soft-over-hard improvement establishes dependence on convex mixing, but it is not by itself proof of pathological pseudo-fitting. Use seed stability, perturbation sensitivity, branch health, and extrapolation jointly."
+}

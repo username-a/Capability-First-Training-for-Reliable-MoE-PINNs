@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the associated manuscript."
+title: "Numerical Qualification of Soft MoE-PINNs"
+type: software
+authors:
+  - family-names: Li
+    given-names: Xiang
+date-released: 2026-08-09
+license: proprietary
+keywords:
+  - physics-informed neural networks
+  - mixture of experts
+  - numerical qualification
+  - branch reliability
+  - routing stress tests
+repository-code: "https://github.com/OWNER/moe-pinn-qualification"
+

@@ -1,0 +1,51 @@
+{
+  "state": "initialising",
+  "phase": "gate_pretraining",
+  "step": 0,
+  "phase_step": 0,
+  "total_steps": 18000,
+  "started_at": 1786037069.2905788,
+  "updated_at": 1786037069.3968515,
+  "device": "cuda",
+  "config": {
+    "seed": 44,
+    "n_subnets": 2,
+    "preset": "official2",
+    "shared_width": 20,
+    "shared_depth": 2,
+    "subnet_width": 20,
+    "subnet_depth": 3,
+    "gate_width": 20,
+    "gate_depth": 1,
+    "gate_temperature": 1.0,
+    "binary_scalar_gate": true,
+    "gate_prior": "official_xpinn",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 10000,
+    "train_steps": 8000,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "test_nx": 65,
+    "test_ny": 65,
+    "test_nt": 21,
+    "eval_every": 100,
+    "checkpoint_every": 1000,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "parameter_counts": {
+    "shared": 920,
+    "gating": 101,
+    "subnets": [
+      1281,
+      1281
+    ],
+    "subnets_total": 2562,
+    "total": 3583
+  }
+}

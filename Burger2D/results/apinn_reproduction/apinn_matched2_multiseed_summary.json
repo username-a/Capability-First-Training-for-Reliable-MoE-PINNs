@@ -1,0 +1,175 @@
+{
+  "protocol": "APINN capacity-matched two-subnetwork scalar-gate model, XPINN prior, 10000 gate-pretraining + 8000 joint physics steps",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "runs": [
+    {
+      "seed": 42,
+      "final_mixture_l2": 0.2087257355451584,
+      "final_worst_subnet_l2": 1.004907488822937,
+      "worst_to_mixture_ratio": 4.814487711341769,
+      "final_cancellation_ratio": 0.9299177368514273,
+      "minimum_soft_load": 0.4180673360824585,
+      "near_starved_subnets": 0,
+      "top1_to_soft_l2_ratio": 3.5676945517998213,
+      "uniform_to_soft_l2_ratio": 1.861178932444499,
+      "oracle_l2": 0.5987541675567627,
+      "responsibility_branch_to_mixture_rmse_ratio": 3.567673391224876,
+      "responsibility_branch_pointwise_win_rate": 0.11499044499949798,
+      "redundant_by_deletion_count": 0,
+      "best_mixture_l2": 0.1920401006937027,
+      "best_mixture_step": 800,
+      "worst_subnet_l2_at_best_mixture": 2.177344799041748,
+      "cancellation_at_best_mixture": 0.9831171029413849
+    },
+    {
+      "seed": 43,
+      "final_mixture_l2": 0.21849431097507477,
+      "final_worst_subnet_l2": 0.9272414445877075,
+      "worst_to_mixture_ratio": 4.243778432718482,
+      "final_cancellation_ratio": 0.9172841906027587,
+      "minimum_soft_load": 0.43029823899269104,
+      "near_starved_subnets": 0,
+      "top1_to_soft_l2_ratio": 3.2766595373853065,
+      "uniform_to_soft_l2_ratio": 1.4922933202816082,
+      "oracle_l2": 0.5930872559547424,
+      "responsibility_branch_to_mixture_rmse_ratio": 3.276649855633622,
+      "responsibility_branch_pointwise_win_rate": 0.09960421255872211,
+      "redundant_by_deletion_count": 0,
+      "best_mixture_l2": 0.17262165248394012,
+      "best_mixture_step": 4000,
+      "worst_subnet_l2_at_best_mixture": 1.2259730100631714,
+      "cancellation_at_best_mixture": 0.9559871163112394
+    },
+    {
+      "seed": 44,
+      "final_mixture_l2": 0.2529660761356354,
+      "final_worst_subnet_l2": 0.7908633947372437,
+      "worst_to_mixture_ratio": 3.1263614743077186,
+      "final_cancellation_ratio": 0.8248371456273897,
+      "minimum_soft_load": 0.49722927808761597,
+      "near_starved_subnets": 0,
+      "top1_to_soft_l2_ratio": 1.714850983046709,
+      "uniform_to_soft_l2_ratio": 1.376906339472842,
+      "oracle_l2": 0.4294702410697937,
+      "responsibility_branch_to_mixture_rmse_ratio": 1.7148382150416999,
+      "responsibility_branch_pointwise_win_rate": 0.06377644480903674,
+      "redundant_by_deletion_count": 0,
+      "best_mixture_l2": 0.24456267058849335,
+      "best_mixture_step": 5200,
+      "worst_subnet_l2_at_best_mixture": 0.8112353682518005,
+      "cancellation_at_best_mixture": 0.8562676187709627
+    }
+  ],
+  "aggregate": {
+    "final_mixture_l2": {
+      "mean": 0.22672870755195618,
+      "sample_std": 0.02324125425034907,
+      "min": 0.2087257355451584,
+      "max": 0.2529660761356354
+    },
+    "final_worst_subnet_l2": {
+      "mean": 0.907670776049296,
+      "sample_std": 0.1083557882788066,
+      "min": 0.7908633947372437,
+      "max": 1.004907488822937
+    },
+    "worst_to_mixture_ratio": {
+      "mean": 4.061542539455989,
+      "sample_std": 0.8586908574309905,
+      "min": 3.1263614743077186,
+      "max": 4.814487711341769
+    },
+    "final_cancellation_ratio": {
+      "mean": 0.8906796910271919,
+      "sample_std": 0.05737013344282955,
+      "min": 0.8248371456273897,
+      "max": 0.9299177368514273
+    },
+    "minimum_soft_load": {
+      "mean": 0.4485316177209218,
+      "sample_std": 0.042614496833733743,
+      "min": 0.4180673360824585,
+      "max": 0.49722927808761597
+    },
+    "near_starved_subnets": {
+      "mean": 0.0,
+      "sample_std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "top1_to_soft_l2_ratio": {
+      "mean": 2.853068357410612,
+      "sample_std": 0.9964082689247956,
+      "min": 1.714850983046709,
+      "max": 3.5676945517998213
+    },
+    "uniform_to_soft_l2_ratio": {
+      "mean": 1.5767928640663165,
+      "sample_std": 0.252952793522311,
+      "min": 1.376906339472842,
+      "max": 1.861178932444499
+    },
+    "oracle_l2": {
+      "mean": 0.5404372215270996,
+      "sample_std": 0.09614198633081887,
+      "min": 0.4294702410697937,
+      "max": 0.5987541675567627
+    },
+    "responsibility_branch_to_mixture_rmse_ratio": {
+      "mean": 2.853053820633399,
+      "sample_std": 0.9964059153660058,
+      "min": 1.7148382150416999,
+      "max": 3.567673391224876
+    },
+    "responsibility_branch_pointwise_win_rate": {
+      "mean": 0.09279036745575227,
+      "sample_std": 0.026278124318386775,
+      "min": 0.06377644480903674,
+      "max": 0.11499044499949798
+    },
+    "redundant_by_deletion_count": {
+      "mean": 0.0,
+      "sample_std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "best_mixture_l2": {
+      "mean": 0.20307480792204538,
+      "sample_std": 0.03721828978058157,
+      "min": 0.17262165248394012,
+      "max": 0.24456267058849335
+    },
+    "best_mixture_step": {
+      "mean": 3333.3333333333335,
+      "sample_std": 2274.496281230931,
+      "min": 800.0,
+      "max": 5200.0
+    },
+    "worst_subnet_l2_at_best_mixture": {
+      "mean": 1.4048510591189067,
+      "sample_std": 0.700401143309174,
+      "min": 0.8112353682518005,
+      "max": 2.177344799041748
+    },
+    "cancellation_at_best_mixture": {
+      "mean": 0.9317906126745291,
+      "sample_std": 0.06679671398921173,
+      "min": 0.8562676187709627,
+      "max": 0.9831171029413849
+    }
+  },
+  "claims_supported": [
+    "Low mixture error does not identify healthy subnetworks under a capacity-matched comparison.",
+    "Soft convex mixing can substantially outperform even pointwise oracle hard routing.",
+    "Balanced global load can coexist with high-error branches and cancellation-dominated accuracy.",
+    "The phenomenon persists across the tested capacity-matched two-subnetwork seeds."
+  ],
+  "claims_not_established_by_this_experiment_alone": [
+    "The observed rates generalise beyond this PDE and training protocol.",
+    "Every APINN configuration is cancellation-dominated."
+  ]
+}

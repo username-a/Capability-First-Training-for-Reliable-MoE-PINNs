@@ -1,0 +1,88 @@
+{
+  "valid": true,
+  "config": {
+    "seed": 42,
+    "information_mode": "reference_guided",
+    "schedule_mode": "blocked",
+    "base_steps": 270,
+    "expert_updates": 300,
+    "gate_updates": 180,
+    "mixture_updates": 0,
+    "refinement_updates": 750,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "teacher_nx": 65,
+    "teacher_ny": 65,
+    "teacher_nt": 21,
+    "gate_pool_size": 8192,
+    "expert_sup_points": 1800,
+    "expert_sup_weight": 8.0,
+    "base_lr": 0.001,
+    "expert_lr": 0.001,
+    "gate_lr": 0.0005,
+    "mixture_lr": 0.0005,
+    "refinement_lr": 0.0005,
+    "gate_temperature": 8.0,
+    "gate_balance_weight": 0.01,
+    "mixture_balance_weight": 0.01,
+    "target_refresh": 10,
+    "directional_expert_variant": "hybrid",
+    "wave_expert_variant": "mixed_lite",
+    "expert_layout_variant": "categorical",
+    "gate_variant": "local_conv"
+  },
+  "initial_hash": "e1c55914bfd3e5bcf4fd3e33f85c091b8423a415d698692061e06f761b55f2d9",
+  "base_hash": "7e756f57d9e5be16500e515306f6db8df2d8e275a1881fe7d419e567ce94837f",
+  "final_expert_hashes": {
+    "smooth": "fa88c6f75b9ee23b84a81b2cd657d7c0d4209b9aeabcb2dab689084732c48e4a",
+    "iso_shock": "29d2be391c218de5b0816e32d174917eb3c99b17edfc4da90de54b601ab9293c",
+    "directional_shock": "ae29fb37a751d279161c17b0013668fc8f825ec93da7954e07240a79d36070cd",
+    "wave": "a2585de2b8914870257f5d72c44bfb8bf76cb161aa5600f36ef315c06e3ef79e"
+  },
+  "training_pool_coordinate_hash": "408eca6e1b994fa03c5ce422469e6f060684857f4616542ea27645ff5b9286d6",
+  "training_pool_size": 88725,
+  "base_batch_hash": "7dbc463b587c70f0053527b0e41e9e59ac064c2df6b49a81ae7dc6be8a23f32c",
+  "expert_batch_hashes": {
+    "smooth": "768267645e341c355feb7730e9418c956974596e9947eb9a8793ccf6b5dd154f",
+    "iso_shock": "eb8c4e789322f5ded3d6bbeb5fbe43c28b1353d46d163e4b55e3f7b443123b26",
+    "directional_shock": "d5143e8a1b091dadd0cf313354abc50d17c66543b564aa0d8d0e2931e0638914",
+    "wave": "be633321803e85515f7f60fcca7a58b724dad0b8843bdf8f07b805c7a676e57b"
+  },
+  "gate_pool_coordinate_hash": "d40b56ec8c906b5405245c10d396fe799abfb73a9f9f88be476020dad7b1e54f",
+  "reference_access": {
+    "teacher_values": true,
+    "reference_region_maps": true,
+    "validation_values": false,
+    "test_values": false
+  },
+  "counters": {
+    "B": 270,
+    "E_smooth": 300,
+    "E_iso_shock": 300,
+    "E_directional_shock": 300,
+    "E_wave": 300,
+    "G": 180,
+    "M": 0,
+    "C": 750,
+    "teacher_gate_point_queries": 147456,
+    "expert_supervised_point_updates": 2160000,
+    "pde_point_updates": 13320000
+  },
+  "train_seconds": 277.62346744537354,
+  "parameter_counts": {
+    "gating": 14948,
+    "experts": [
+      4945,
+      42049,
+      43355,
+      43701
+    ],
+    "experts_total": 134050,
+    "total": 186727,
+    "base": 37729,
+    "rotation": 0,
+    "rotation_route": 0
+  },
+  "test_loaded_during_training": false
+}

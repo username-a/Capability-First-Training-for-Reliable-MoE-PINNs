@@ -1,0 +1,85 @@
+{
+  "state": "completed",
+  "phase": "joint_physics_training",
+  "step": 18000,
+  "phase_step": 8000,
+  "total_steps": 18000,
+  "started_at": 1786036341.2536874,
+  "updated_at": 1786036646.453274,
+  "device": "cuda",
+  "config": {
+    "seed": 42,
+    "n_subnets": 2,
+    "preset": "official2",
+    "shared_width": 20,
+    "shared_depth": 2,
+    "subnet_width": 20,
+    "subnet_depth": 3,
+    "gate_width": 20,
+    "gate_depth": 1,
+    "gate_temperature": 1.0,
+    "binary_scalar_gate": true,
+    "gate_prior": "official_xpinn",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 10000,
+    "train_steps": 8000,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "test_nx": 65,
+    "test_ny": 65,
+    "test_nt": 21,
+    "eval_every": 100,
+    "checkpoint_every": 1000,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "parameter_counts": {
+    "shared": 920,
+    "gating": 101,
+    "subnets": [
+      1281,
+      1281
+    ],
+    "subnets_total": 2562,
+    "total": 3583
+  },
+  "latest": {
+    "phase": "joint_physics_training",
+    "step": 8000,
+    "global_step": 18000,
+    "elapsed_seconds": 305.1862347126007,
+    "total_loss": 0.0011220795568078756,
+    "residual_loss": 0.0011220795568078756,
+    "initial_loss": 8.622635260882187e-17,
+    "boundary_loss": 0.0,
+    "mixture_l2": 0.24832148849964142,
+    "mixture_mse": 0.003027251223102212,
+    "max_absolute_error": 0.8468066453933716,
+    "per_subnet_l2": [
+      2.792909622192383,
+      0.7347337007522583
+    ],
+    "worst_subnet_l2": 2.792909622192383,
+    "soft_load": [
+      0.3000459671020508,
+      0.6999540328979492
+    ],
+    "top1_load": [
+      0.2834601402282715,
+      0.7165398597717285
+    ],
+    "effective_subnets": 1.3607527017593384,
+    "route_entropy": 0.30803799629211426,
+    "oracle_hit": 0.8795830011367798,
+    "oracle_rmse": 0.1197378858923912,
+    "routing_regret": 0.031926847994327545,
+    "weighted_expert_mse": 0.04626400023698807,
+    "cancellation_mse": 0.043236749013885856,
+    "cancellation_ratio": 0.9345657269670787
+  }
+}

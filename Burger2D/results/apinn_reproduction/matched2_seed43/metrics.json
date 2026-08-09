@@ -1,0 +1,73 @@
+{
+  "state": "completed",
+  "train_seconds": 382.98483896255493,
+  "device": "cuda",
+  "parameter_counts": {
+    "shared": 62348,
+    "gating": 241,
+    "subnets": [
+      61920,
+      61920
+    ],
+    "subnets_total": 123840,
+    "total": 186429
+  },
+  "metrics": {
+    "mixture_l2": 0.21849431097507477,
+    "mixture_mse": 0.00234368909150362,
+    "max_absolute_error": 0.8433150053024292,
+    "per_subnet_l2": [
+      0.9272414445877075,
+      0.683753252029419
+    ],
+    "worst_subnet_l2": 0.9272414445877075,
+    "soft_load": [
+      0.43029823899269104,
+      0.5697017908096313
+    ],
+    "top1_load": [
+      0.3135080337524414,
+      0.6864919662475586
+    ],
+    "effective_subnets": 1.8685932159423828,
+    "route_entropy": 0.6251858472824097,
+    "oracle_hit": 0.7908819317817688,
+    "oracle_rmse": 0.1342247724533081,
+    "routing_regret": 0.01031794399023056,
+    "weighted_expert_mse": 0.028334233909845352,
+    "cancellation_mse": 0.025990544818341732,
+    "cancellation_ratio": 0.9172841906027587
+  },
+  "config": {
+    "seed": 43,
+    "n_subnets": 2,
+    "preset": "matched2",
+    "shared_width": 143,
+    "shared_depth": 3,
+    "subnet_width": 143,
+    "subnet_depth": 3,
+    "gate_width": 48,
+    "gate_depth": 1,
+    "gate_temperature": 1.0,
+    "binary_scalar_gate": true,
+    "gate_prior": "official_xpinn",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 10000,
+    "train_steps": 8000,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "test_nx": 65,
+    "test_ny": 65,
+    "test_nt": 21,
+    "eval_every": 100,
+    "checkpoint_every": 1000,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "method_note": "K-way clean-room generalisation of the public two-subnetwork APINN/SXPINN recipe."
+}

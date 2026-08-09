@@ -1,0 +1,80 @@
+{
+  "state": "completed",
+  "train_seconds": 1.4081811904907227,
+  "device": "cuda",
+  "parameter_counts": {
+    "shared": 38416,
+    "gating": 2740,
+    "subnets": [
+      38081,
+      38081,
+      38081,
+      38081
+    ],
+    "subnets_total": 152324,
+    "total": 193480
+  },
+  "metrics": {
+    "mixture_l2": 0.5534428954124451,
+    "mixture_mse": 0.015037152916193008,
+    "max_absolute_error": 0.6705731749534607,
+    "per_subnet_l2": [
+      0.8114961981773376,
+      0.5172379016876221,
+      0.5250651836395264,
+      0.545148491859436
+    ],
+    "worst_subnet_l2": 0.8114961981773376,
+    "soft_load": [
+      0.2585972547531128,
+      0.23802568018436432,
+      0.25477486848831177,
+      0.2486022412776947
+    ],
+    "top1_load": [
+      0.47746407985687256,
+      0.010380389168858528,
+      0.46042266488075256,
+      0.05173288285732269
+    ],
+    "effective_subnets": 3.918217897415161,
+    "route_entropy": 1.365636944770813,
+    "oracle_hit": 0.3149168789386749,
+    "oracle_rmse": 0.0898958370089531,
+    "routing_regret": 0.01062637846916914,
+    "weighted_expert_mse": 0.0187076386064291,
+    "cancellation_mse": 0.0036704856902360916,
+    "cancellation_ratio": 0.19620251211046413
+  },
+  "config": {
+    "seed": 42,
+    "n_subnets": 4,
+    "preset": "matched",
+    "shared_width": 112,
+    "shared_depth": 3,
+    "subnet_width": 112,
+    "subnet_depth": 3,
+    "gate_width": 48,
+    "gate_depth": 2,
+    "gate_temperature": 1.0,
+    "gate_prior": "spatial",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 1,
+    "train_steps": 1,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "test_nx": 65,
+    "test_ny": 65,
+    "test_nt": 21,
+    "eval_every": 1,
+    "checkpoint_every": 1,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "method_note": "K-way clean-room generalisation of the public two-subnetwork APINN/SXPINN recipe."
+}

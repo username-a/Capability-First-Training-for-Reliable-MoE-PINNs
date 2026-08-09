@@ -1,0 +1,33 @@
+{
+  "l2_mixed": 0.19910459220409393,
+  "l2_oracle": 0.6223342418670654,
+  "routing_regret": -0.4232296496629715,
+  "worst_expert_l2": 1.37424635887146,
+  "expert_l2_interior": 0.7251400351524353,
+  "expert_l2_exterior": 0.7527446746826172,
+  "expert_l2_interface": 1.37424635887146,
+  "effective_experts": 1.8516957759857178,
+  "min_load": 0.0,
+  "mean_gate_entropy": 1.0852221250534058,
+  "error_cancellation": 0.7877179980278015,
+  "load_interior": 0.30629223585128784,
+  "load_exterior": 0.6937077641487122,
+  "load_interface": 0.0,
+  "pre_main": {
+    "l2_mixed": 0.24441084265708923,
+    "l2_oracle": 0.03590894117951393,
+    "routing_regret": 0.2085019014775753,
+    "worst_expert_l2": 1.0102900266647339,
+    "expert_l2_interior": 0.6960090398788452,
+    "expert_l2_exterior": 0.4417553246021271,
+    "expert_l2_interface": 1.0102900266647339,
+    "effective_experts": 2.198420763015747,
+    "min_load": 0.06684935092926025,
+    "mean_gate_entropy": 1.0974851846694946,
+    "error_cancellation": 0.6550404131412506,
+    "load_interior": 0.06684935092926025,
+    "load_exterior": 0.6831411719322205,
+    "load_interface": 0.2500095069408417
+  },
+  "wall_seconds": 135.43724584579468
+}

@@ -1,0 +1,91 @@
+{
+  "state": "completed",
+  "phase": "joint_physics_training",
+  "step": 5,
+  "phase_step": 3,
+  "total_steps": 5,
+  "started_at": 1786033354.8793094,
+  "updated_at": 1786033357.0138803,
+  "device": "cuda",
+  "config": {
+    "seed": 42,
+    "n_subnets": 4,
+    "shared_width": 16,
+    "shared_depth": 2,
+    "subnet_width": 16,
+    "subnet_depth": 2,
+    "gate_width": 12,
+    "gate_depth": 2,
+    "gate_temperature": 1.0,
+    "gate_prior": "spatial",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 2,
+    "train_steps": 3,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 64,
+    "n_ic": 32,
+    "n_bc_per_face": 8,
+    "test_nx": 17,
+    "test_ny": 17,
+    "test_nt": 5,
+    "eval_every": 1,
+    "checkpoint_every": 2,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "parameter_counts": {
+    "shared": 608,
+    "gating": 256,
+    "subnets": [
+      561,
+      561,
+      561,
+      561
+    ],
+    "subnets_total": 2244,
+    "total": 3108
+  },
+  "latest": {
+    "phase": "joint_physics_training",
+    "step": 3,
+    "global_step": 5,
+    "elapsed_seconds": 2.1258106231689453,
+    "total_loss": 0.19023993611335754,
+    "residual_loss": 0.19023993611335754,
+    "initial_loss": 5.206881595106125e-17,
+    "boundary_loss": 0.0,
+    "mixture_l2": 0.45982685685157776,
+    "mixture_mse": 0.007882400415837765,
+    "max_absolute_error": 0.4735390543937683,
+    "per_subnet_l2": [
+      0.4865609109401703,
+      0.5209200382232666,
+      0.6338990926742554,
+      0.4368840157985687
+    ],
+    "worst_subnet_l2": 0.6338990926742554,
+    "soft_load": [
+      0.2756339907646179,
+      0.23462578654289246,
+      0.24871483445167542,
+      0.2410254180431366
+    ],
+    "top1_load": [
+      0.5231834053993225,
+      0.06643598526716232,
+      0.40830451250076294,
+      0.0020761245395988226
+    ],
+    "effective_subnets": 3.9026808738708496,
+    "route_entropy": 1.3616636991500854,
+    "oracle_hit": 0.30380621552467346,
+    "oracle_rmse": 0.055720459669828415,
+    "routing_regret": 0.007287751883268356,
+    "weighted_expert_mse": 0.01039252057671547,
+    "cancellation_mse": 0.0025101201608777046,
+    "cancellation_ratio": 0.2415314112056367
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "valid": true,
+  "mode": "coadapt",
+  "seed": 51,
+  "initial_hash": "8799f917cfc4b517cde4651242c72f7407cfd75a0f04048731159d8b77364378",
+  "base_hash": "4f242dadad00aaabd5cb73dbc80d906ce24371ebc8fb8925463352462bcb00f2",
+  "pre_expert_hashes": {
+    "smooth": "7bc0ea627857bc25066963aa31ae30999504a59622ba5b3bf22e81b5baedbf40",
+    "iso_shock": "8d81c0e252e655eb174319a2c8f5900995703313626236774808a180cd6afdaa",
+    "directional_shock": "5967bd5765cc9840596822eb1cbad834b1bd55fc50a9f45a8c471e4e24887eae",
+    "wave": "be54c16fec32878ff7216a1dd185d26635505b2726ddbb58fb4f7415ab3c9eb3"
+  },
+  "final_expert_hashes": {
+    "smooth": "7bc0ea627857bc25066963aa31ae30999504a59622ba5b3bf22e81b5baedbf40",
+    "iso_shock": "8d81c0e252e655eb174319a2c8f5900995703313626236774808a180cd6afdaa",
+    "directional_shock": "5967bd5765cc9840596822eb1cbad834b1bd55fc50a9f45a8c471e4e24887eae",
+    "wave": "be54c16fec32878ff7216a1dd185d26635505b2726ddbb58fb4f7415ab3c9eb3"
+  },
+  "training_pool_coordinate_hash": "408eca6e1b994fa03c5ce422469e6f060684857f4616542ea27645ff5b9286d6",
+  "base_batch_hash": "f1a8c7309ae11badf4bbb3f4fd3c2ec27db4a16ab5d28b8ae55278054a9f63bc",
+  "expert_batch_hashes": {
+    "smooth": "04866a985a575677f15619f036f7cd6fc862b00e6ab76481f00892d4ee47d225",
+    "iso_shock": "bbb098d13050eacb5f50ea4266350be0dc63b46c6b5784a2dece9715d02631a0",
+    "directional_shock": "e647eeaec914d6018e00334d733bf5194ffba68993b100ec908be05b99e0efbc",
+    "wave": "3992a20f23a7194d69d046b217aee131eb49c6c6ddc50dc1a1a6d41a93673275"
+  },
+  "gate_pool_coordinate_hash": "ebba2ac94355abcd7e28deef5d3049f881dacccba574e4b07c4cba5e3f713515",
+  "supervision_union_coordinate_hash": "64953c2ad51d4d0d863350f8695ec23b88a01a612dfc0c43344c93da5838f10b",
+  "parameter_steps": {
+    "base": 270,
+    "each_expert_main": 300,
+    "gate_main": 300,
+    "gate_calibration": 750
+  },
+  "reference_access": {
+    "staged": "specialist supervision + gate teacher",
+    "coadapt": "same specialist-supervision union through mixture loss",
+    "test_values": false
+  },
+  "train_seconds": 280.45365476608276
+}

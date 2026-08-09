@@ -1,0 +1,80 @@
+{
+  "state": "completed",
+  "train_seconds": 461.66519570350647,
+  "device": "cuda",
+  "parameter_counts": {
+    "shared": 38416,
+    "gating": 2740,
+    "subnets": [
+      38081,
+      38081,
+      38081,
+      38081
+    ],
+    "subnets_total": 152324,
+    "total": 193480
+  },
+  "metrics": {
+    "mixture_l2": 0.3069838583469391,
+    "mixture_mse": 0.004626493901014328,
+    "max_absolute_error": 0.7934967279434204,
+    "per_subnet_l2": [
+      1.7241002321243286,
+      0.8556697368621826,
+      1.3832473754882812,
+      1.0499982833862305
+    ],
+    "worst_subnet_l2": 1.7241002321243286,
+    "soft_load": [
+      0.3562009632587433,
+      0.1913813352584839,
+      0.02243044413626194,
+      0.42998719215393066
+    ],
+    "top1_load": [
+      0.35743024945259094,
+      0.19154691696166992,
+      0.003798253135755658,
+      0.44722455739974976
+    ],
+    "effective_subnets": 1.1179052591323853,
+    "route_entropy": 0.11145668476819992,
+    "oracle_hit": 0.7764553427696228,
+    "oracle_rmse": 0.033471573144197464,
+    "routing_regret": 0.004994693677872419,
+    "weighted_expert_mse": 0.006115040276199579,
+    "cancellation_mse": 0.0014885463751852512,
+    "cancellation_ratio": 0.24342380556001245
+  },
+  "config": {
+    "seed": 42,
+    "n_subnets": 4,
+    "preset": "matched",
+    "shared_width": 112,
+    "shared_depth": 3,
+    "subnet_width": 112,
+    "subnet_depth": 3,
+    "gate_width": 48,
+    "gate_depth": 2,
+    "gate_temperature": 1.0,
+    "gate_prior": "spatial",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 1000,
+    "train_steps": 8000,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "test_nx": 65,
+    "test_ny": 65,
+    "test_nt": 21,
+    "eval_every": 100,
+    "checkpoint_every": 1000,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "method_note": "K-way clean-room generalisation of the public two-subnetwork APINN/SXPINN recipe."
+}

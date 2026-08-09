@@ -1,0 +1,57 @@
+{
+  "state": "completed",
+  "phase": "done",
+  "started_at": 1786147286.6175027,
+  "updated_at": 1786148312.7736251,
+  "protocol": {
+    "solver": "global-Lax-Friedrichs finite-difference WENO5 + SSP-RK3; fourth-order interior diffusion",
+    "grids": [
+      129,
+      257,
+      513
+    ],
+    "output_times": 41,
+    "cfl": 0.35,
+    "finest_pair_global_threshold": 0.02,
+    "gate": "global differences strictly decrease and finest-pair global difference <= threshold",
+    "no_automatic_retry": true
+  },
+  "grid": 513,
+  "output_index": 40,
+  "output_count": 40,
+  "time": 1.0,
+  "steps": 2120,
+  "grid_elapsed_seconds": 944.0752888999996,
+  "grid_timings": {
+    "129": 1.1601233999972465,
+    "257": 27.24136500000168,
+    "513": 944.0763938000018
+  },
+  "grid_steps": {
+    "129": 160,
+    "257": 560,
+    "513": 2120
+  },
+  "convergence_gate": {
+    "passed": true,
+    "monotonically_decreasing": true,
+    "global_differences": [
+      0.02210411950166195,
+      0.004657546583429349
+    ],
+    "threshold": 0.02
+  },
+  "evaluation": {
+    "device": "cuda",
+    "points": 344064
+  },
+  "completed_models": 9,
+  "total_models": 9,
+  "finished_at": 1786148312.7736251,
+  "outputs": [
+    "convergence.json",
+    "convergence_gate.json",
+    "main_checkpoint_reevaluation.json",
+    "apinn_checkpoint_reevaluation.json"
+  ]
+}

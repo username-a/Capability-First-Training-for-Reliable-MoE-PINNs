@@ -1,0 +1,85 @@
+{
+  "state": "completed",
+  "phase": "joint_physics_training",
+  "step": 5,
+  "phase_step": 3,
+  "total_steps": 5,
+  "started_at": 1786036305.5463254,
+  "updated_at": 1786036306.874663,
+  "device": "cuda",
+  "config": {
+    "seed": 42,
+    "n_subnets": 2,
+    "preset": "official2",
+    "shared_width": 16,
+    "shared_depth": 2,
+    "subnet_width": 16,
+    "subnet_depth": 2,
+    "gate_width": 12,
+    "gate_depth": 1,
+    "gate_temperature": 1.0,
+    "binary_scalar_gate": true,
+    "gate_prior": "official_xpinn",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 2,
+    "train_steps": 3,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 64,
+    "n_ic": 32,
+    "n_bc_per_face": 8,
+    "test_nx": 17,
+    "test_ny": 17,
+    "test_nt": 5,
+    "eval_every": 1,
+    "checkpoint_every": 2,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "parameter_counts": {
+    "shared": 608,
+    "gating": 61,
+    "subnets": [
+      561,
+      561
+    ],
+    "subnets_total": 1122,
+    "total": 1791
+  },
+  "latest": {
+    "phase": "joint_physics_training",
+    "step": 3,
+    "global_step": 5,
+    "elapsed_seconds": 1.3223135471343994,
+    "total_loss": 0.2028030902147293,
+    "residual_loss": 0.2028030902147293,
+    "initial_loss": 8.673617379884035e-18,
+    "boundary_loss": 0.0,
+    "mixture_l2": 0.47286003828048706,
+    "mixture_mse": 0.008335565216839314,
+    "max_absolute_error": 0.46930623054504395,
+    "per_subnet_l2": [
+      0.47214189171791077,
+      0.5466465353965759
+    ],
+    "worst_subnet_l2": 0.5466465353965759,
+    "soft_load": [
+      0.5242627859115601,
+      0.47573724389076233
+    ],
+    "top1_load": [
+      0.6242214441299438,
+      0.37577855587005615
+    ],
+    "effective_subnets": 1.9807791709899902,
+    "route_entropy": 0.6834902763366699,
+    "oracle_hit": 0.5564013719558716,
+    "oracle_rmse": 0.07114700973033905,
+    "routing_regret": 0.004588002804666758,
+    "weighted_expert_mse": 0.00964989885687828,
+    "cancellation_mse": 0.0013143336400389671,
+    "cancellation_ratio": 0.13620180475799837
+  }
+}

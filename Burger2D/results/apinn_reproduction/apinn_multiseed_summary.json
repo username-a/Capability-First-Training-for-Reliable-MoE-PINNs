@@ -1,0 +1,175 @@
+{
+  "protocol": "APINN matched-capacity, spatial gate prior, 1000 gate-pretraining + 8000 joint physics steps",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "runs": [
+    {
+      "seed": 42,
+      "final_mixture_l2": 0.3069838583469391,
+      "final_worst_subnet_l2": 1.7241002321243286,
+      "worst_to_mixture_ratio": 5.616256963504021,
+      "final_cancellation_ratio": 0.24342380556001245,
+      "minimum_soft_load": 0.02243044413626194,
+      "near_starved_subnets": 1,
+      "top1_to_soft_l2_ratio": 1.0491024146701713,
+      "uniform_to_soft_l2_ratio": 1.7478959761789037,
+      "oracle_l2": 0.16111797094345093,
+      "responsibility_branch_to_mixture_rmse_ratio": 1.0491031353952616,
+      "responsibility_branch_pointwise_win_rate": 0.32123769899466265,
+      "redundant_by_deletion_count": 1,
+      "best_mixture_l2": 0.23329104483127594,
+      "best_mixture_step": 5000,
+      "worst_subnet_l2_at_best_mixture": 1.4896948337554932,
+      "cancellation_at_best_mixture": 0.3925740821216787
+    },
+    {
+      "seed": 43,
+      "final_mixture_l2": 0.26447340846061707,
+      "final_worst_subnet_l2": 1.5613880157470703,
+      "worst_to_mixture_ratio": 5.903761836909126,
+      "final_cancellation_ratio": 0.3881140121381454,
+      "minimum_soft_load": 0.040450986474752426,
+      "near_starved_subnets": 2,
+      "top1_to_soft_l2_ratio": 1.1056438829588207,
+      "uniform_to_soft_l2_ratio": 2.049701228873423,
+      "oracle_l2": 0.16883699595928192,
+      "responsibility_branch_to_mixture_rmse_ratio": 1.1056395031379058,
+      "responsibility_branch_pointwise_win_rate": 0.40752645687326294,
+      "redundant_by_deletion_count": 1,
+      "best_mixture_l2": 0.23093892633914948,
+      "best_mixture_step": 7500,
+      "worst_subnet_l2_at_best_mixture": 1.8347216844558716,
+      "cancellation_at_best_mixture": 0.5460586372287006
+    },
+    {
+      "seed": 44,
+      "final_mixture_l2": 0.18849052488803864,
+      "final_worst_subnet_l2": 1.3910953998565674,
+      "worst_to_mixture_ratio": 7.380187416226164,
+      "final_cancellation_ratio": 0.3078457739225303,
+      "minimum_soft_load": 0.00352872465737164,
+      "near_starved_subnets": 1,
+      "top1_to_soft_l2_ratio": 1.1309231270035423,
+      "uniform_to_soft_l2_ratio": 2.7280912908517627,
+      "oracle_l2": 0.11410892754793167,
+      "responsibility_branch_to_mixture_rmse_ratio": 1.1309231336194079,
+      "responsibility_branch_pointwise_win_rate": 0.30581931215132113,
+      "redundant_by_deletion_count": 0,
+      "best_mixture_l2": 0.17742137610912323,
+      "best_mixture_step": 6300,
+      "worst_subnet_l2_at_best_mixture": 1.3766311407089233,
+      "cancellation_at_best_mixture": 0.3806956964905304
+    }
+  ],
+  "aggregate": {
+    "final_mixture_l2": {
+      "mean": 0.25331593056519824,
+      "sample_std": 0.06002944696805571,
+      "min": 0.18849052488803864,
+      "max": 0.3069838583469391
+    },
+    "final_worst_subnet_l2": {
+      "mean": 1.558861215909322,
+      "sample_std": 0.1665167952985073,
+      "min": 1.3910953998565674,
+      "max": 1.7241002321243286
+    },
+    "worst_to_mixture_ratio": {
+      "mean": 6.30006873887977,
+      "sample_std": 0.9463915843467297,
+      "min": 5.616256963504021,
+      "max": 7.380187416226164
+    },
+    "final_cancellation_ratio": {
+      "mean": 0.31312786387356273,
+      "sample_std": 0.07248958080713253,
+      "min": 0.24342380556001245,
+      "max": 0.3881140121381454
+    },
+    "minimum_soft_load": {
+      "mean": 0.022136718422795337,
+      "sample_std": 0.01846288332097312,
+      "min": 0.00352872465737164,
+      "max": 0.040450986474752426
+    },
+    "near_starved_subnets": {
+      "mean": 1.3333333333333333,
+      "sample_std": 0.5773502691896257,
+      "min": 1.0,
+      "max": 2.0
+    },
+    "top1_to_soft_l2_ratio": {
+      "mean": 1.095223141544178,
+      "sample_std": 0.04189392713041111,
+      "min": 1.0491024146701713,
+      "max": 1.1309231270035423
+    },
+    "uniform_to_soft_l2_ratio": {
+      "mean": 2.1752294986346965,
+      "sample_std": 0.5020096847757028,
+      "min": 1.7478959761789037,
+      "max": 2.7280912908517627
+    },
+    "oracle_l2": {
+      "mean": 0.1480212981502215,
+      "sample_std": 0.029621487077779285,
+      "min": 0.11410892754793167,
+      "max": 0.16883699595928192
+    },
+    "responsibility_branch_to_mixture_rmse_ratio": {
+      "mean": 1.0952219240508585,
+      "sample_std": 0.041892988588497625,
+      "min": 1.0491031353952616,
+      "max": 1.1309231336194079
+    },
+    "responsibility_branch_pointwise_win_rate": {
+      "mean": 0.3448611560064156,
+      "sample_std": 0.054814565698928126,
+      "min": 0.30581931215132113,
+      "max": 0.40752645687326294
+    },
+    "redundant_by_deletion_count": {
+      "mean": 0.6666666666666666,
+      "sample_std": 0.5773502691896258,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "best_mixture_l2": {
+      "mean": 0.2138837824265162,
+      "sample_std": 0.03159926298493757,
+      "min": 0.17742137610912323,
+      "max": 0.23329104483127594
+    },
+    "best_mixture_step": {
+      "mean": 6266.666666666667,
+      "sample_std": 1250.3332889007368,
+      "min": 5000.0,
+      "max": 7500.0
+    },
+    "worst_subnet_l2_at_best_mixture": {
+      "mean": 1.5670158863067627,
+      "sample_std": 0.23863286748333895,
+      "min": 1.3766311407089233,
+      "max": 1.8347216844558716
+    },
+    "cancellation_at_best_mixture": {
+      "mean": 0.43977613861363657,
+      "sample_std": 0.09223476104591145,
+      "min": 0.3806956964905304,
+      "max": 0.5460586372287006
+    }
+  },
+  "claims_supported": [
+    "Low mixture error does not identify globally healthy subnetworks.",
+    "Useful routing and near-starved or degraded subnetworks can coexist.",
+    "The phenomenon persists across matched-capacity APINN seeds."
+  ],
+  "claims_not_established_by_this_experiment_alone": [
+    "All soft-mixture accuracy is pathological error cancellation.",
+    "APINN lacks meaningful local routing.",
+    "The observed rates generalise beyond this PDE and training protocol."
+  ]
+}

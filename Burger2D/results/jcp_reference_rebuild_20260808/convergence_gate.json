@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "monotonically_decreasing": true,
+  "global_differences": [
+    0.02210411950166195,
+    0.004657546583429349
+  ],
+  "threshold": 0.02
+}

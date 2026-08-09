@@ -1,0 +1,501 @@
+{
+  "summary": {
+    "four_subnet_parameter_matched": {
+      "n": 3,
+      "soft_relative_l2": {
+        "mean": 0.39008601506551105,
+        "sample_std": 0.043465064181631013
+      },
+      "worst_branch_l2": {
+        "mean": 1.4542595545450847,
+        "sample_std": 0.12907676605804752
+      },
+      "oracle_l2": {
+        "mean": 0.21279815832773843,
+        "sample_std": 0.02526057769245166
+      },
+      "aggregation_gain": {
+        "mean": 0.14367030775234968,
+        "sample_std": 0.06770704393754082
+      },
+      "effective_experts": {
+        "mean": 2.7605960369110107,
+        "sample_std": 0.30273746638642146
+      },
+      "top1_ratio": {
+        "mean": 1.016197310498394,
+        "sample_std": 0.02433660525771747
+      },
+      "temperature_2_ratio": {
+        "mean": 1.0192578823358762,
+        "sample_std": 0.04181894359732117
+      },
+      "delete_highest_load_ratio": {
+        "mean": 1.940118537019308,
+        "sample_std": 0.4311954026601481
+      }
+    },
+    "two_subnet_official_size": {
+      "n": 3,
+      "soft_relative_l2": {
+        "mean": 0.2501319497823715,
+        "sample_std": 0.06861290862060997
+      },
+      "worst_branch_l2": {
+        "mean": 2.6007007360458374,
+        "sample_std": 0.6964265303185069
+      },
+      "oracle_l2": {
+        "mean": 0.7280885179837545,
+        "sample_std": 0.2555542717619197
+      },
+      "aggregation_gain": {
+        "mean": 0.9503263624239096,
+        "sample_std": 0.019107469662504508
+      },
+      "effective_experts": {
+        "mean": 1.8978067636489868,
+        "sample_std": 0.06067844192713237
+      },
+      "top1_ratio": {
+        "mean": 3.101285191159335,
+        "sample_std": 0.6825024704906055
+      },
+      "temperature_2_ratio": {
+        "mean": 1.8822421171064887,
+        "sample_std": 0.6580634913487855
+      },
+      "delete_highest_load_ratio": {
+        "mean": 11.347803586187203,
+        "sample_std": 5.3778273196737745
+      }
+    },
+    "two_subnet_parameter_matched": {
+      "n": 3,
+      "soft_relative_l2": {
+        "mean": 0.32041922211647034,
+        "sample_std": 0.11331181914686751
+      },
+      "worst_branch_l2": {
+        "mean": 0.8805469671885172,
+        "sample_std": 0.07663179104801714
+      },
+      "oracle_l2": {
+        "mean": 0.5354498624801636,
+        "sample_std": 0.03676759871746359
+      },
+      "aggregation_gain": {
+        "mean": 0.772395398212617,
+        "sample_std": 0.18478375089394214
+      },
+      "effective_experts": {
+        "mean": 1.9833382765452068,
+        "sample_std": 0.015014740135739156
+      },
+      "top1_ratio": {
+        "mean": 1.9849262999713246,
+        "sample_std": 0.6385423535724575
+      },
+      "temperature_2_ratio": {
+        "mean": 1.068478930553962,
+        "sample_std": 0.056615213526591414
+      },
+      "delete_highest_load_ratio": {
+        "mean": 2.831500917270295,
+        "sample_std": 1.1773760702139595
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "matched2_seed42",
+      "group": "two_subnet_parameter_matched",
+      "seed": 42,
+      "soft": {
+        "relative_l2": 0.26440203189849854,
+        "rmse": 0.0643419399857521,
+        "max_abs": 1.0562618970870972
+      },
+      "per_branch_l2": [
+        0.9678183794021606,
+        0.7256021499633789
+      ],
+      "worst_branch_l2": 0.9678183794021606,
+      "oracle_l2": 0.5643406510353088,
+      "aggregation_gain": 0.8760685857643232,
+      "soft_routing_regret": 0.0145456213504076,
+      "effective_experts": 1.9708555936813354,
+      "soft_load": [
+        0.41453805565834045,
+        0.5854618549346924
+      ],
+      "top1": {
+        "relative_l2": 0.5877851843833923,
+        "rmse": 0.14303314685821533,
+        "max_abs": 1.46964430809021,
+        "ratio_vs_soft": 2.2230736283034225
+      },
+      "temperature_2": {
+        "relative_l2": 0.29977691173553467,
+        "rmse": 0.07294858247041702,
+        "max_abs": 1.0364775657653809,
+        "ratio_vs_soft": 1.1337920120470792
+      },
+      "delete_highest_load": {
+        "relative_l2": 0.9678183794021606,
+        "rmse": 0.23551148176193237,
+        "max_abs": 1.4223231077194214,
+        "ratio_vs_soft": 3.66040446986314,
+        "deleted_expert": 1
+      }
+    },
+    {
+      "run": "official2_seed42",
+      "group": "two_subnet_official_size",
+      "seed": 42,
+      "soft": {
+        "relative_l2": 0.22352878749370575,
+        "rmse": 0.0543944351375103,
+        "max_abs": 1.031577229499817
+      },
+      "per_branch_l2": [
+        2.651362180709839,
+        0.6125565767288208
+      ],
+      "worst_branch_l2": 2.651362180709839,
+      "oracle_l2": 0.4976884722709656,
+      "aggregation_gain": 0.9377841383102808,
+      "soft_routing_regret": 0.03288889676332474,
+      "effective_experts": 1.8338353633880615,
+      "soft_load": [
+        0.29481810331344604,
+        0.7051818370819092
+      ],
+      "top1": {
+        "relative_l2": 0.5211538076400757,
+        "rmse": 0.12681904435157776,
+        "max_abs": 1.3512107133865356,
+        "ratio_vs_soft": 2.3314840718435454
+      },
+      "temperature_2": {
+        "relative_l2": 0.4405578076839447,
+        "rmse": 0.10720650106668472,
+        "max_abs": 1.1542084217071533,
+        "ratio_vs_soft": 1.9709220124336342
+      },
+      "delete_highest_load": {
+        "relative_l2": 2.651362180709839,
+        "rmse": 0.6451931595802307,
+        "max_abs": 2.7461280822753906,
+        "ratio_vs_soft": 11.86139025061592,
+        "deleted_expert": 1
+      }
+    },
+    {
+      "run": "seed42_spatial_matched",
+      "group": "four_subnet_parameter_matched",
+      "seed": 42,
+      "soft": {
+        "relative_l2": 0.4402545988559723,
+        "rmse": 0.107134610414505,
+        "max_abs": 1.0747398138046265
+      },
+      "per_branch_l2": [
+        1.5759282112121582,
+        0.9192160964012146,
+        1.3144357204437256,
+        0.9880072474479675
+      ],
+      "worst_branch_l2": 1.5759282112121582,
+      "oracle_l2": 0.23457849025726318,
+      "aggregation_gain": 0.11782419146966183,
+      "soft_routing_regret": 0.009752325713634491,
+      "effective_experts": 3.1023852825164795,
+      "soft_load": [
+        0.3589003086090088,
+        0.19083699584007263,
+        0.022395292297005653,
+        0.42786726355552673
+      ],
+      "top1": {
+        "relative_l2": 0.44997847080230713,
+        "rmse": 0.10950075089931488,
+        "max_abs": 1.0758845806121826,
+        "ratio_vs_soft": 1.0220869287262482
+      },
+      "temperature_2": {
+        "relative_l2": 0.4495636820793152,
+        "rmse": 0.1093992292881012,
+        "max_abs": 1.0458438396453857,
+        "ratio_vs_soft": 1.0211447722466342
+      },
+      "delete_highest_load": {
+        "relative_l2": 1.0125120878219604,
+        "rmse": 0.24638985097408295,
+        "max_abs": 1.7343862056732178,
+        "ratio_vs_soft": 2.299833074891286,
+        "deleted_expert": 3
+      }
+    },
+    {
+      "run": "matched2_seed43",
+      "group": "two_subnet_parameter_matched",
+      "seed": 43,
+      "soft": {
+        "relative_l2": 0.24602603912353516,
+        "rmse": 0.05986900255084038,
+        "max_abs": 0.9565712213516235
+      },
+      "per_branch_l2": [
+        0.8242539763450623,
+        0.6906406879425049
+      ],
+      "worst_branch_l2": 0.8242539763450623,
+      "oracle_l2": 0.547946035861969,
+      "aggregation_gain": 0.8820640279794905,
+      "soft_routing_regret": 0.012612703256309032,
+      "effective_experts": 1.9791594743728638,
+      "soft_load": [
+        0.4277562201023102,
+        0.5722437500953674
+      ],
+      "top1": {
+        "relative_l2": 0.6077263951301575,
+        "rmse": 0.14788562059402466,
+        "max_abs": 1.1723304986953735,
+        "ratio_vs_soft": 2.4701710326889605
+      },
+      "temperature_2": {
+        "relative_l2": 0.25543856620788574,
+        "rmse": 0.062159035354852676,
+        "max_abs": 0.9025201797485352,
+        "ratio_vs_soft": 1.0382582555809239
+      },
+      "delete_highest_load": {
+        "relative_l2": 0.8242539763450623,
+        "rmse": 0.20057567954063416,
+        "max_abs": 0.9986979961395264,
+        "ratio_vs_soft": 3.3502712935649304,
+        "deleted_expert": 1
+      }
+    },
+    {
+      "run": "official2_seed43",
+      "group": "two_subnet_official_size",
+      "seed": 43,
+      "soft": {
+        "relative_l2": 0.3280627429485321,
+        "rmse": 0.07983231544494629,
+        "max_abs": 1.1452326774597168
+      },
+      "per_branch_l2": [
+        1.5329537391662598,
+        1.8803268671035767
+      ],
+      "worst_branch_l2": 1.8803268671035767,
+      "oracle_l2": 1.0029596090316772,
+      "aggregation_gain": 0.9408775871523692,
+      "soft_routing_regret": 0.04822959750890732,
+      "effective_experts": 1.9545435905456543,
+      "soft_load": [
+        0.6068028807640076,
+        0.39319711923599243
+      ],
+      "top1": {
+        "relative_l2": 1.0957362651824951,
+        "rmse": 0.2666403353214264,
+        "max_abs": 2.307049512863159,
+        "ratio_vs_soft": 3.3400204343057602
+      },
+      "temperature_2": {
+        "relative_l2": 0.38853633403778076,
+        "rmse": 0.09454728662967682,
+        "max_abs": 1.2145791053771973,
+        "ratio_vs_soft": 1.1843354431098445
+      },
+      "delete_highest_load": {
+        "relative_l2": 1.8803268671035767,
+        "rmse": 0.45756304264068604,
+        "max_abs": 2.335598945617676,
+        "ratio_vs_soft": 5.731607466924613,
+        "deleted_expert": 0
+      }
+    },
+    {
+      "run": "seed43_spatial_matched",
+      "group": "four_subnet_parameter_matched",
+      "seed": 43,
+      "soft": {
+        "relative_l2": 0.3662453889846802,
+        "rmse": 0.08912474662065506,
+        "max_abs": 1.0454468727111816
+      },
+      "per_branch_l2": [
+        0.6405795216560364,
+        0.8903323411941528,
+        0.9376716613769531,
+        1.4679796695709229
+      ],
+      "worst_branch_l2": 1.4679796695709229,
+      "oracle_l2": 0.2187100648880005,
+      "aggregation_gain": 0.2204935028543169,
+      "soft_routing_regret": 0.007357493974268436,
+      "effective_experts": 2.6532235145568848,
+      "soft_load": [
+        0.46716317534446716,
+        0.041015300899744034,
+        0.04062935709953308,
+        0.4511922299861908
+      ],
+      "top1": {
+        "relative_l2": 0.3623838424682617,
+        "rmse": 0.08818423002958298,
+        "max_abs": 1.0791423320770264,
+        "ratio_vs_soft": 0.9894563955409142
+      },
+      "temperature_2": {
+        "relative_l2": 0.3882572650909424,
+        "rmse": 0.0944802463054657,
+        "max_abs": 1.005380630493164,
+        "ratio_vs_soft": 1.0601014422796813
+      },
+      "delete_highest_load": {
+        "relative_l2": 0.753877580165863,
+        "rmse": 0.18345274031162262,
+        "max_abs": 1.1013354063034058,
+        "ratio_vs_soft": 2.0583947343495357,
+        "deleted_expert": 0
+      }
+    },
+    {
+      "run": "matched2_seed44",
+      "group": "two_subnet_parameter_matched",
+      "seed": 44,
+      "soft": {
+        "relative_l2": 0.4508295953273773,
+        "rmse": 0.10971034318208694,
+        "max_abs": 1.0999470949172974
+      },
+      "per_branch_l2": [
+        0.6689531207084656,
+        0.8495685458183289
+      ],
+      "worst_branch_l2": 0.8495685458183289,
+      "oracle_l2": 0.4940629005432129,
+      "aggregation_gain": 0.5590535808940376,
+      "soft_routing_regret": 0.01284213736653328,
+      "effective_experts": 1.999999761581421,
+      "soft_load": [
+        0.4997158944606781,
+        0.5002840757369995
+      ],
+      "top1": {
+        "relative_l2": 0.5687369704246521,
+        "rmse": 0.13839839398860931,
+        "max_abs": 1.2071624994277954,
+        "ratio_vs_soft": 1.2615342389215916
+      },
+      "temperature_2": {
+        "relative_l2": 0.46588122844696045,
+        "rmse": 0.11336906254291534,
+        "max_abs": 1.0874547958374023,
+        "ratio_vs_soft": 1.0333865240338829
+      },
+      "delete_highest_load": {
+        "relative_l2": 0.6689531207084656,
+        "rmse": 0.16278500854969025,
+        "max_abs": 0.9609081745147705,
+        "ratio_vs_soft": 1.4838269883828152,
+        "deleted_expert": 1
+      }
+    },
+    {
+      "run": "official2_seed44",
+      "group": "two_subnet_official_size",
+      "seed": 44,
+      "soft": {
+        "relative_l2": 0.1988043189048767,
+        "rmse": 0.04837797209620476,
+        "max_abs": 0.9222813844680786
+      },
+      "per_branch_l2": [
+        3.2704131603240967,
+        0.909132719039917
+      ],
+      "worst_branch_l2": 3.2704131603240967,
+      "oracle_l2": 0.6836174726486206,
+      "aggregation_gain": 0.9723173618090785,
+      "soft_routing_regret": 0.05687141418457031,
+      "effective_experts": 1.9050413370132446,
+      "soft_load": [
+        0.34532374143600464,
+        0.6546762585639954
+      ],
+      "top1": {
+        "relative_l2": 0.7221270799636841,
+        "rmse": 0.17572468519210815,
+        "max_abs": 2.14955472946167,
+        "ratio_vs_soft": 3.6323510673286994
+      },
+      "temperature_2": {
+        "relative_l2": 0.4953147768974304,
+        "rmse": 0.12053117156028748,
+        "max_abs": 0.9590763449668884,
+        "ratio_vs_soft": 2.4914688957759874
+      },
+      "delete_highest_load": {
+        "relative_l2": 3.2704131603240967,
+        "rmse": 0.7958332300186157,
+        "max_abs": 3.7959156036376953,
+        "ratio_vs_soft": 16.450413041021076,
+        "deleted_expert": 1
+      }
+    },
+    {
+      "run": "seed44_spatial_matched",
+      "group": "four_subnet_parameter_matched",
+      "seed": 44,
+      "soft": {
+        "relative_l2": 0.36375805735588074,
+        "rmse": 0.08851929754018784,
+        "max_abs": 1.1383501291275024
+      },
+      "per_branch_l2": [
+        0.6335277557373047,
+        1.0597574710845947,
+        0.684260904788971,
+        1.3188707828521729
+      ],
+      "worst_branch_l2": 1.3188707828521729,
+      "oracle_l2": 0.18510591983795166,
+      "aggregation_gain": 0.0926932289330703,
+      "soft_routing_regret": 0.0066071441397070885,
+      "effective_experts": 2.526179313659668,
+      "soft_load": [
+        0.530365526676178,
+        0.003216963494196534,
+        0.08154456317424774,
+        0.38487303256988525
+      ],
+      "top1": {
+        "relative_l2": 0.3772347867488861,
+        "rmse": 0.09179896116256714,
+        "max_abs": 1.1405744552612305,
+        "ratio_vs_soft": 1.0370486072280194
+      },
+      "temperature_2": {
+        "relative_l2": 0.3552197217941284,
+        "rmse": 0.08644171059131622,
+        "max_abs": 1.1124998331069946,
+        "ratio_vs_soft": 0.976527432481313
+      },
+      "delete_highest_load": {
+        "relative_l2": 0.5318607687950134,
+        "rmse": 0.1294252872467041,
+        "max_abs": 1.0311787128448486,
+        "ratio_vs_soft": 1.4621278018171027,
+        "deleted_expert": 0
+      }
+    }
+  ]
+}

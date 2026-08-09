@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "coarse_grid": 129,
+      "fine_grid": 257,
+      "region": "global",
+      "relative_l2_difference": 0.02210411950166195,
+      "max_absolute_difference": 0.17312604188919067
+    },
+    {
+      "coarse_grid": 129,
+      "fine_grid": 257,
+      "region": "steep-gradient",
+      "relative_l2_difference": 0.04856958583745049,
+      "max_absolute_difference": 0.17312604188919067
+    },
+    {
+      "coarse_grid": 257,
+      "fine_grid": 513,
+      "region": "global",
+      "relative_l2_difference": 0.004657546583429349,
+      "max_absolute_difference": 0.04973834753036499
+    },
+    {
+      "coarse_grid": 257,
+      "fine_grid": 513,
+      "region": "steep-gradient",
+      "relative_l2_difference": 0.010256334036582222,
+      "max_absolute_difference": 0.04973834753036499
+    }
+  ]
+}

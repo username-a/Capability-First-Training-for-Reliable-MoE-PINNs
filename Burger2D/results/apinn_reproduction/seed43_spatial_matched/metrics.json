@@ -1,0 +1,80 @@
+{
+  "state": "completed",
+  "train_seconds": 463.9375579357147,
+  "device": "cuda",
+  "parameter_counts": {
+    "shared": 38416,
+    "gating": 2740,
+    "subnets": [
+      38081,
+      38081,
+      38081,
+      38081
+    ],
+    "subnets_total": 152324,
+    "total": 193480
+  },
+  "metrics": {
+    "mixture_l2": 0.26447340846061707,
+    "mixture_mse": 0.003433880163356662,
+    "max_absolute_error": 0.8453483581542969,
+    "per_subnet_l2": [
+      0.6514147520065308,
+      0.8671153783798218,
+      0.9382824897766113,
+      1.5613880157470703
+    ],
+    "worst_subnet_l2": 1.5613880157470703,
+    "soft_load": [
+      0.4648652672767639,
+      0.04089730232954025,
+      0.040450986474752426,
+      0.4537864923477173
+    ],
+    "top1_load": [
+      0.5036686658859253,
+      0.0,
+      0.039425190538167953,
+      0.45690616965293884
+    ],
+    "effective_subnets": 1.1765408515930176,
+    "route_entropy": 0.16257865726947784,
+    "oracle_hit": 0.7605184316635132,
+    "oracle_rmse": 0.035764824599027634,
+    "routing_regret": 0.004332838114351034,
+    "weighted_expert_mse": 0.005611960776150227,
+    "cancellation_mse": 0.002178080612793565,
+    "cancellation_ratio": 0.3881140121381454
+  },
+  "config": {
+    "seed": 43,
+    "n_subnets": 4,
+    "preset": "matched",
+    "shared_width": 112,
+    "shared_depth": 3,
+    "subnet_width": 112,
+    "subnet_depth": 3,
+    "gate_width": 48,
+    "gate_depth": 2,
+    "gate_temperature": 1.0,
+    "gate_prior": "spatial",
+    "prior_temperature": 0.32,
+    "gate_pretrain_steps": 1000,
+    "train_steps": 8000,
+    "gate_lr": 0.001,
+    "train_lr": 0.0008,
+    "weight_decay": 0.001,
+    "n_col": 6000,
+    "n_ic": 1200,
+    "n_bc_per_face": 400,
+    "test_nx": 65,
+    "test_ny": 65,
+    "test_nt": 21,
+    "eval_every": 100,
+    "checkpoint_every": 1000,
+    "w_res": 1.0,
+    "w_ic": 10.0,
+    "w_bc": 5.0
+  },
+  "method_note": "K-way clean-room generalisation of the public two-subnetwork APINN/SXPINN recipe."
+}
