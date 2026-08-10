@@ -50,7 +50,7 @@ Adaptive weighting, sampling, and causal curricula address parts of the PINN opt
 Jointly optimizing several learned branches also introduces gradient conflicts inside a single physical objective. The gate seeks to separate expert outputs (Section 3.2), while each expert seeks to fit the physical residual independently; the two gradient directions can oppose each other. Multi-task learning has developed remedies such as gradient projection and gradient surgery \cite{yu2020gradsurgery}, but those target supervised multi-task settings. The point here is that even if the gradient conflict is alleviated, the aggregate objective still does not identify the branch functions.
 
 \subsection{General MoEs and MoE--PINNs}
-Adaptive local experts and hierarchical MoEs established joint gate--expert learning \cite{jacobs1991,jordan1994}. Positive theory recovers specialization under latent cluster structure, suitable initialization, and favorable optimization conditions \cite{chen2022moe}. Absence of explicit regime labels does not prove absence of latent identifiable structure; rather, the assumptions needed by that positive theory are not established for the continuous PDE objectives studied here. MoEs have been used for PINN ensembles, soft decomposition, and locally hard physical constraints \cite{bischof2021,hu2023,chalapathi2024}. A recent analysis for one-dimensional hyperbolic conservation laws bounds the aggregated MoE--PINN prediction \cite{dan2025moepinn}; it neither requires every branch to be healthy nor excludes substantial mass on a poor branch.
+Adaptive local experts and hierarchical MoEs established joint gate--expert learning \cite{jacobs1991,jordan1994}. Positive theory recovers specialization under latent cluster structure, suitable initialization, and favorable optimization conditions \cite{chen2022moe}. Absence of explicit regime labels does not prove absence of latent identifiable structure; rather, the assumptions needed by that positive theory are not established for the continuous PDE objectives studied here. MoEs have been used for PINN ensembles, soft decomposition, and locally hard physical constraints \cite{bischof2021,hu2023,chalapathi2024}. A recent analysis for one-dimensional hyperbolic conservation laws bounds the aggregated MoE--PINN prediction \cite{dan2025moepinn}; it neither requires every branch to be healthy nor excludes substantial mass on a poor branch. Two recent preprints extend physics-informed expert decomposition to output-aware soft gating for free boundaries and residual-driven hard gating for unknown interfaces \cite{barkhudaryan2026dmoe,peng2026pimoe}.
 
 Load-balancing regularization in sparse MoEs primarily prevents capacity overflow and expert starvation \cite{shazeer2017,fedus2022}, yet representation collapse and routing degradation can still occur when loads are nearly balanced \cite{chi2022collapse}. The mathematical novelty claimed here is deliberately limited: compensating non-uniqueness is familiar in mixtures and ensembles, whereas we make its PDE-function-space consequence for complete branches explicit and connect it to a reproducible audit. Table~\ref{tab:positioning} states the distinction at claim level.
 
@@ -66,6 +66,7 @@ Ensemble ambiguity \cite{krogh1995} & Fixed ensemble members and aggregate squar
 Specialization recovery \cite{chen2022moe} & Latent clusters, favorable initialization and optimization & Positive recovery under structured assumptions; those assumptions are not established for the present PDE objectives.\\
 APINN \cite{hu2023} & Trainable partition-of-unity gate for soft domain decomposition & Gate initialization changes performance; no branch-health identifiability criterion is given.\\
 MoE--PINN bound \cite{dan2025moepinn} & One-dimensional hyperbolic setting and aggregate predictor & Bounds the mixture prediction, not complete-branch reliability or routing counterfactuals.\\
+Recent physics-informed MoE preprints \cite{barkhudaryan2026dmoe,peng2026pimoe} & Soft/hard gated free-boundary and unknown-interface decomposition & Focus on geometric decomposition and solution recovery, not routing-intervention reliability of complete soft-mixture branches.\\
 This work & Soft PDE mixture; theorem restricted to mixture-only objectives & PDE-function-space non-uniqueness, reference-supported branch diagnostics, and same-grid routing interventions; no claim of a new generic mixture-identifiability theorem.\\
 \bottomrule
 \end{tabularx}
@@ -402,7 +403,7 @@ For Allen--Cahn, joint refinement from 201 to 401 gives a 0.145\% global differe
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.78\linewidth]{figures/allen_cahn_routing.pdf}
+\includegraphics[width=.88\linewidth]{figures/allen_cahn_routing.pdf}
 \caption{Allen--Cahn routing at $t=0.125$ for seed 42. (a) Staged and (b) co-adaptive argmax routing; colors identify the interior, exterior, and interface experts. (c) Reference phase field, whose zero-level neighborhood marks the moving circular interface. Staged routing assigns a visible band to the interface expert, whereas co-adaptation nearly removes that band. The region error and load statistics in Fig.~\ref{fig:allen_bars} are computed over the full evaluation grid, not from this single snapshot.}
 \label{fig:allen}
 \end{figure}
@@ -427,7 +428,7 @@ The exploratory KdV schedule sweep shows more stable oracle coverage and capabil
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.92\linewidth]{figures/kdv_routing_partition.pdf}
+\includegraphics[width=.88\linewidth]{figures/kdv_routing_partition.pdf}
 \caption{KdV two-soliton solution and $x$--$t$ routing partitions (seed 42; interaction window $x\in[-10,8]$). (a) Exact solution. (b) $f=100\%$, where the dispersion, smooth, and shock experts form a structured partition along the soliton trajectories. (c) $f=0\%$, where argmax routing concentrates on the shock expert. Colors identify expert identity and are shared across panels (b,c); the exact-solution color scale in (a) represents amplitude rather than routing. The reported loads and errors use the full test domain.}
 \label{fig:kdv_routing}
 \end{figure}
@@ -460,7 +461,7 @@ and the results reported here correspond to commit \texttt{93c827d}. Large neura
 \section*{Declaration of competing interest}
 The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
-\begin{thebibliography}{99}\small
+\begin{thebibliography}{99}\footnotesize
 \bibitem{raissi2019} M. Raissi, P. Perdikaris, G.E. Karniadakis, Physics-informed neural networks, J. Comput. Phys. 378 (2019) 686--707.
 \bibitem{karniadakis2021} G.E. Karniadakis, I.G. Kevrekidis, L. Lu, et al., Physics-informed machine learning, Nat. Rev. Phys. 3 (2021) 422--440.
 \bibitem{cuomo2022} S. Cuomo, V.S. Di Cola, F. Giampaolo, et al., Scientific machine learning through PINNs, J. Sci. Comput. 92 (2022) 88.
@@ -494,6 +495,8 @@ The authors declare that they have no known competing financial interests or per
 \bibitem{bischof2021} R. Bischof, M.A. Kraus, Mixture-of-experts-ensemble meta-learning for PINNs, Forum Bauinformatik (2022).
 \bibitem{chalapathi2024} N. Chalapathi, Y. Du, A. Krishnapriyan, Scaling physics-informed hard constraints with mixture-of-experts, ICLR (2024).
 \bibitem{dan2025moepinn} J. Dan, J. Sun, J. Li, S. Shi, Adaptive optimal selection MoE embedded with PINNs for hyperbolic conservation laws, Commun. Nonlinear Sci. Numer. Simul. 149 (2025) 108936.
+\bibitem{barkhudaryan2026dmoe} R. Barkhudaryan, F.N. Mottaghi, M. Safdari, H. Shahgholian, Leveraging dynamic mixture of experts in PINN for Bernoulli free boundary, SSRN preprint (2026), doi:10.2139/ssrn.6093426.
+\bibitem{peng2026pimoe} M. Peng, H. Tang, Autonomous discovery of hidden physical structures via competitive physics-informed neural experts, SSRN preprint (2026), doi:10.2139/ssrn.6403685.
 \bibitem{shu1988eno} C.-W. Shu, S. Osher, Efficient implementation of essentially non-oscillatory shock-capturing schemes, J. Comput. Phys. 77 (1988) 439--471.
 \bibitem{jiang1996weno} G.-S. Jiang, C.-W. Shu, Efficient implementation of weighted ENO schemes, J. Comput. Phys. 126 (1996) 202--228.
 \bibitem{gottlieb2001ssp} S. Gottlieb, C.-W. Shu, E. Tadmor, Strong stability-preserving high-order time discretization methods, SIAM Rev. 43 (2001) 89--112.
