@@ -1,16 +1,18 @@
 cff-version: 1.2.0
 message: "If you use this software or data, please cite the associated manuscript."
-title: "Numerical Qualification of Soft MoE-PINNs"
+title: "Capability-First Training for Reliable MoE-PINNs"
 type: software
 authors:
   - family-names: Li
     given-names: Xiang
-date-released: 2026-08-09
+  - family-names: Huang
+    given-names: Liping
+date-released: 2026-08-23
 license: proprietary
 keywords:
   - physics-informed neural networks
   - mixture of experts
-  - numerical qualification
   - branch reliability
-  - routing stress tests
-repository-code: "https://github.com/username-a/Numerical-Qualification-of-Soft-MoE-PINNs-Identifiability-Branch-Reliability-Audits-and-Routing"
+  - capability-first staged training
+  - routing robustness
+repository-code: "https://github.com/username-a/Capability-First-Training-for-Reliable-MoE-PINNs"
