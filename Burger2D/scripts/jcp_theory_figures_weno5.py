@@ -164,10 +164,16 @@ def main() -> None:
                         ha="center", va="center", fontsize=6.7,
                         color="white" if matrices[mode][i, j] > 2.0 else "black")
     axes[0].set_ylabel("Ex-ante capability region")
-    fig.colorbar(im, ax=axes, fraction=0.032, pad=0.025).set_label("Local relative L2 (log color scale)")
     for ax, lab in zip(axes, ["a", "b"]):
         _panel_label(ax, lab)
-    fig.subplots_adjust(bottom=0.23, left=0.13, right=0.89, top=0.91, wspace=0.34)
+    fig.subplots_adjust(bottom=0.23, left=0.13, right=0.84, top=0.91, wspace=0.34)
+    # Keep the shared scale exactly aligned with the right-hand heatmap.  An
+    # explicit colorbar axis avoids the vertical drift caused by creating the
+    # colorbar before the final subplot adjustment.
+    right_box = axes[1].get_position()
+    cax = fig.add_axes([right_box.x1 + 0.018, right_box.y0, 0.016, right_box.height])
+    cbar = fig.colorbar(im, cax=cax)
+    cbar.set_label("Local relative L2 (log color scale)", labelpad=8)
     _save_review(fig, "F11_capability_matrix_weno5")
 
     # ---- F12 capability gap + oracle coverage ----
