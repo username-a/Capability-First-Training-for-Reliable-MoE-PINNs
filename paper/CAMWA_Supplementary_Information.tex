@@ -1,0 +1,286 @@
+%!TEX TS-program = xelatex
+\documentclass[preprint,12pt]{elsarticle}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs,graphicx,tabularx,array,multirow}
+\usepackage{microtype,xcolor,hyperref,caption,subcaption}
+\usepackage{enumitem,float,xurl,placeins}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black}
+\captionsetup{font=small,labelfont=bf}
+\setlist{nosep,leftmargin=2em}
+\emergencystretch=3em
+\journal{Computers \& Mathematics with Applications}
+
+\begin{document}
+\begin{frontmatter}
+\title{Supplementary Information for ``From Aggregate Accuracy to Branch Reliability: A Capability-First Training Paradigm for Mixture-of-Experts Physics-Informed Neural Networks''}
+\author[1]{Xiang Li}
+\author[1]{Liping Huang\corref{cor1}}
+\cortext[cor1]{Corresponding author}
+\ead{hlp369369@163.com}
+\address[1]{Henan University of Economics and Law, Zhengzhou, China}
+\end{frontmatter}
+
+\noindent This Supplementary Information accompanies a manuscript submitted to \emph{Computers \& Mathematics with Applications}. It provides notation, metric definitions, complete training configurations, extended derivations, and per-seed results. Equation and theorem numbers explicitly identified as belonging to the main manuscript refer to that document.
+
+\appendix
+\section{Notation}
+\label{app:notation}
+
+\begin{table}[H]
+\centering\small
+\caption{Main notation used in the paper.}
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning\\
+\midrule
+$z=(x,y,t)$ & space-time point\\
+$\mathcal Q$ & space-time domain $\Omega\times(0,T)$\\
+$u_{\rm b}$ & shared base network output\\
+$e_k$ & residual correction of the $k$th expert\\
+$u_k=u_{\rm b}+\alpha e_k$ & complete $k$th single-branch prediction\\
+$g_k,\ s_k$ & gating weight and logit\\
+$u_{\rm mix}$ & gate-weighted mixture prediction\\
+$u^\star$ & reference solution\\
+$\delta_k$ & pointwise error of the $k$th branch\\
+$E_{\rm mix},\ E_{\rm weighted}$ & mixture and weighted single-branch mean squared error\\
+$G_{\rm agg}$ & soft aggregation gain\\
+$\ell_k,\ k^\star,\ \Delta$ & local capability loss, oracle branch, capability gap\\
+$\varepsilon_{\rm orc}^2,\ \eta,\ \zeta$ & oracle error, mean misrouting weight, non-oracle routing cost\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Metric definitions}
+\label{app:metrics}
+
+Let $\mathcal E$ denote the evaluation point set, $u^\star$ the reference solution, $g_k$ the gating weights, $u_k$ the complete single-branch predictions, and $\ell_k=|u_k-u^\star|^2$. For Burgers, $\mathcal E$ is the 344,064-point subset sampled from the $513^2\times41$ conservative WENO5 reference.
+
+\begin{itemize}[nosep]
+  \item \textbf{Mixture relative $L_2$}: $\big(\sum_{z\in\mathcal E}|u_{\rm mix}(z)-u^\star(z)|^2\big)^{1/2}\big/\big(\sum_{z\in\mathcal E}|u^\star(z)|^2\big)^{1/2}$.
+  \item \textbf{Single-branch relative $L_2$}: the same with $u_{\rm mix}$ replaced by $u_k$.
+  \item \textbf{Responsibility-region absolute RMSE}: $\big(|R_k|^{-1}\sum_{z\in R_k}|u_k(z)-u^\star(z)|^2\big)^{1/2}$, with $R_k=\{z:g_k(z)\ge g_j(z),\ \forall j\}$. The mixture version replaces $u_k$ by $u_{\rm mix}$.
+  \item \textbf{Oracle relative $L_2$}: the mixture error with $u_{\rm mix}$ replaced by the pointwise best branch.
+  \item \textbf{Soft-routing regret}: $|\mathcal E|^{-1}\sum_{z\in\mathcal E}\big(\sum_k g_k(z)\ell_k(z)-\min_k\ell_k(z)\big)$.
+  \item \textbf{Effective experts}: $\exp[-\sum_k\bar g_k\log(\bar g_k+10^{-12})]$, where
+  \[\bar g_k=|\mathcal E|^{-1}\sum_{z\in\mathcal E}g_k(z).\]
+  \item \textbf{Route entropy and minimum load}:
+  \[H_{\rm route}=-|\mathcal E|^{-1}\sum_z\sum_kg_k(z)\log[g_k(z)+10^{-12}],\qquad \min_k\bar g_k.\]
+  \item \textbf{Soft-aggregation gain}: $G_{\rm agg}=1-E_{\rm mix}/E_{\rm weighted}$, where $E_{\rm mix}=|\mathcal E|^{-1}\sum_z|u_{\rm mix}-u^\star|^2$ and $E_{\rm weighted}=|\mathcal E|^{-1}\sum_z\sum_k g_k(z)\ell_k(z)$.
+  \item \textbf{Top-1, temperature, and deletion ratios}: relative $L_2$ under argmax hard routing, the post-hoc transform $\widetilde g_k(2)\propto g_k^{1/2}$, or deletion of the highest-load expert, divided by the original soft-mixture relative $L_2$.
+\end{itemize}
+
+\section{Training configuration}
+\label{app:config}
+
+The main model is a residual soft MoE--PINN with 186,727 total parameters.
+The base network has input dimension 3 ($x,y,t$), output dimension 1, width 96, depth 5, and tanh activation.
+The four experts are smooth (width 48, depth 3), iso-shock (width 96, depth 5),
+directional-shock (width 96, depth 5), and wave (width 64, depth 4).
+The gate is a local-convolutional context gate of width 64 and depth 3 with learned-router temperature $T_g=0.8$,
+16 context neighbors, and a hidden convolution width of 24.
+
+Primary training protocol: base pretraining for 1,000 steps (learning rate $10^{-3}$);
+independent training of each expert for 1,000 steps (learning rate $10^{-3}$, 1,800 supervised points per expert);
+static-teacher gate training for 1,000 steps (learning rate $5\times10^{-4}$);
+or co-adaptation as 1,000 joint updates with expert/gate learning rates $10^{-3}$/$5\times10^{-4}$.
+The teacher and test grids are spatially offset and have zero coordinate overlap. The lower-budget $2\times2$ screening control retains the 270/300-step configuration described in Section~4.2 of the main manuscript.
+Collocation points: $n_{\rm col}=6000$, $n_{\rm ic}=1200$, and 400 points per boundary face;
+loss weights $w_{\rm res}=1$, $w_{\rm ic}=5$, $w_{\rm bc}=2$, and $w_{\rm sup}=8$.
+Reference-teacher sharpness is $\beta=8$; the capability-prior exponent is 1.15; the gate balance coefficient is 0.01; and targets are refreshed every ten co-adaptive steps. All experiments use Adam with default moments, Xavier initialization, gradient-norm clipping at one, deterministic seeds 42--51, and the same sampled sets within each paired seed. The recorded environment is Python 3.10.10, PyTorch 2.6.0+cu124, NumPy 2.2.6, and SciPy 1.15.3.
+
+APINN configurations:
+\begin{itemize}[nosep]
+\item parameter-matched two-subnetwork: shared and subnet widths 143/depth 3; gate width 48/depth 1; 186,429 parameters; scalar binary gate and official XPINN prior with prior temperature 0.32;
+\item official-size two-subnetwork: shared width 20/depth 2, subnet width 20/depth 3, gate width 20/depth 1; 3,583 parameters; the same XPINN prior;
+\item parameter-matched four-subnetwork: shared and subnet widths 112/depth 3, gate width 48/depth 2; 193,480 parameters; spatial prior.
+\end{itemize}
+The two-subnetwork models use 10,000 gate-pretraining steps; the four-subnetwork model uses 1,000. All use 8,000 joint steps, gate/train learning rates $10^{-3}$/$8\times10^{-4}$, weight decay $10^{-3}$, $n_{\rm col}=6000$, $n_{\rm ic}=1200$, 400 boundary points per face, and residual/initial/boundary weights 1/10/5.
+
+For Allen--Cahn, $u_t=\Delta u+\epsilon^{-2}(u-u^3)$ on $[-1,1]^2\times[0,0.25]$, $\epsilon=0.08$, $u(x,y,0)=\tanh[(0.8-\sqrt{x^2+y^2})/(\sqrt2\epsilon)]$, and boundary value $-1$. The reference uses exact reaction updates followed by Crank--Nicolson diffusion diagonalized by a discrete sine transform, with a $201^2$ grid and $\Delta t=2\times10^{-4}$; a $401^2$, $10^{-4}$ refinement gives the differences reported in Section 5.4. Three width-96/depth-5 experts represent interior, exterior, and interface behavior; the gate has width 48/depth 3 and $T_g=0.8$. Each expert and the main phase use 1,500 steps.
+
+For KdV, $u_t+6uu_x+u_{xxx}=0$ on $[-20,20]\times[0,6]$. The exact two-soliton solution is $u=2\partial_{xx}\log F$, with $F=1+e^{\eta_1}+e^{\eta_2}+A_{12}e^{\eta_1+\eta_2}$, $\eta_i=k_ix-k_i^3t+\delta_i$, $(k_1,k_2)=(1,0.5)$, $(\delta_1,\delta_2)=(0,4)$, and $A_{12}=[(k_1-k_2)/(k_1+k_2)]^2$. The three experts have widths/depths 96/5, 64/3, and 96/5; the width-32/depth-3 gate uses $T_g=0.9$. The full independent phase is 880 steps per expert, the gate-only phase 400 steps, and joint fine-tuning 2,200 steps; the schedule sweep is not update-budget matched.
+
+\section{Derivations and proof supplement}
+\label{app:proofs}
+
+\subsection{Proof of the nonlinear mixture-residual identity}
+\label{app:residual_proof}
+
+Let $u=\sum_k g_ku_k$. Direct differentiation gives
+\begin{align}
+u_t&=\sum_k g_ku_{k,t}+\sum_k g_{k,t}u_k,\\
+Du&=\sum_k g_kDu_k+\sum_k u_kDg_k,\\
+\Delta u&=\sum_k g_k\Delta u_k
++2\sum_k\nabla g_k\cdot\nabla u_k
++\sum_k u_k\Delta g_k.
+\end{align}
+Substitution into $\mathcal B_\nu[u]=u_t+uDu-\nu\Delta u$, followed by
+adding and subtracting $\sum_k g_ku_kDu_k$, gives
+\begin{align}
+\mathcal B_\nu[u]
+={}&\sum_k g_k(u_{k,t}+u_kDu_k-\nu\Delta u_k)\\
+&+\sum_k u_k(g_{k,t}-\nu\Delta g_k)
+-2\nu\sum_k\nabla g_k\cdot\nabla u_k
++u\sum_k u_kDg_k\\
+&+u\sum_k g_kDu_k-\sum_k g_ku_kDu_k.
+\end{align}
+The three lines are, respectively, the weighted branch residuals, the
+gate-derivative interaction, and the nonlinear interaction. Moreover,
+\begin{align}
+u\sum_k g_kDu_k-\sum_k g_ku_kDu_k
+={}&-\left[\sum_k g_ku_kDu_k\right.\nonumber\\
+&\left.-\left(\sum_k g_ku_k\right)
+\left(\sum_k g_kDu_k\right)\right],
+\end{align}
+which is $-\operatorname{Cov}_g(u_k,Du_k)$ and proves
+the nonlinear mixture-residual identity in the main manuscript.
+
+For two branches, the nonlinear term reduces to
+\begin{equation}
+\mathcal I_{\rm nl}
+=-g_1g_2(u_1-u_2)(Du_1-Du_2).
+\label{eq:two_branch_covariance}
+\end{equation}
+Thus disagreement in both branch value and directional derivative can generate
+a nonlinear interaction even for a constant gate.
+
+\subsection{Derivation of the gate--expert coupled gradient}
+
+By Eq.~(1) of the main manuscript, the mixture output depends on the expert parameters $\theta_k$ through
+$u_{\rm mix}=u_{\rm b}+\alpha\sum_j g_je_j$, so $\partial u_{\rm mix}/\partial e_k=\alpha g_k$.
+The chain rule gives $\nabla_{\theta_k}\mathcal J=(D_{\theta_k}e_k)^*[\alpha g_kq]$.
+For the gate logit $s_k$, note that
+$\partial g_k/\partial s_k=g_k(1-g_k)/T_g$ and $\partial g_j/\partial s_k=-g_jg_k/T_g$,
+hence
+\begin{equation}
+\frac{\partial u_{\rm mix}}{\partial s_k}
+=\frac{\alpha}{T_g}\Big[g_k(1-g_k)e_k-\sum_{j\ne k}g_jg_ke_j\Big]
+=\frac{\alpha}{T_g}g_k(e_k-\bar e).
+\end{equation}
+Substituting $D_{s_k}\mathcal J[\xi]=\langle q,\partial u_{\rm mix}/\partial s_k\,\xi\rangle$ gives Eq.~(2) of the main manuscript.
+
+\subsection{Expansion of the Jensen identity}
+
+Pointwise expansion of the mixture error:
+\begin{equation}
+\Big|\sum_k g_k\delta_k\Big|^2
+=\sum_{i,j}g_ig_j\delta_i\delta_j
+=\sum_k g_k|\delta_k|^2
+-\frac12\sum_{i,j}g_ig_j|\delta_i-\delta_j|^2,
+\end{equation}
+where the second step uses
+$\sum_{i,j}g_ig_j|\delta_i-\delta_j|^2
+=2\sum_k g_k|\delta_k|^2-2\sum_{i,j}g_ig_j\delta_i\delta_j$.
+The cross term is nonnegative, so the mixture error does not exceed the weighted single-branch error.
+
+\subsection{Proof of the error bound}
+
+At a fixed point $z$, let $k^\star$ denote the oracle branch. Rewrite the mixture error as
+\begin{equation}
+u_{\rm mix}-u^\star
+=g_{k^\star}(u_{k^\star}-u^\star)+\sum_{j\ne k^\star}g_j(u_j-u^\star).
+\end{equation}
+Pointwise Jensen gives
+$|\sum_kg_k(u_k-u^\star)|^2\le\sum_kg_k|u_k-u^\star|^2$.
+Separating the oracle term and using $g_{k^\star}\le1$, then integrating over $\mathcal Q$, yields
+$\varepsilon_{\rm mix}^2\le\varepsilon_{\rm orc}^2+\zeta$.
+Since $\zeta\le M^2\sum_{j\ne k^\star}g_j=M^2\eta$, the second inequality in Eq.~(14) of the main manuscript follows.
+
+\section{Per-seed results}
+\label{app:per_seed}
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Per-seed main results on the conservative WENO5 reference solution.}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{clcccccc}
+\toprule
+Seed & Mode & Soft-mixture $L_2$ & Worst-branch $L_2$ & Top-1 ratio & $T{=}2$ ratio & Delete-expert ratio & Effective experts\\
+\midrule
+42 & CFST & 0.2070 & 0.3270 & 1.091 & 0.962 & 1.192 & 3.339\\
+42 & coadapt & 0.2377 & 32.39 & 1.427 & 2.378 & 1.341 & 2.619\\
+43 & CFST & 0.1864 & 0.2753 & 1.059 & 0.979 & 1.007 & 3.713\\
+43 & coadapt & 0.1326 & 10.28 & 1.259 & 2.326 & 2.210 & 2.731\\
+44 & CFST & 0.2163 & 0.4092 & 1.031 & 1.019 & 1.221 & 3.591\\
+44 & coadapt & 0.1751 & 24.01 & 1.419 & 3.267 & 1.571 & 2.814\\
+45 & CFST & 0.2079 & 0.3237 & 1.088 & 0.967 & 1.056 & 3.419\\
+45 & coadapt & 0.1362 & 29.81 & 1.208 & 5.156 & 1.411 & 2.732\\
+46 & CFST & 0.1907 & 0.3347 & 1.042 & 1.001 & 1.074 & 3.611\\
+46 & coadapt & 0.1328 & 13.99 & 1.340 & 2.065 & 1.173 & 2.505\\
+47 & CFST & 0.2162 & 0.3276 & 1.040 & 1.001 & 1.008 & 3.716\\
+47 & coadapt & 0.1553 & 34.41 & 1.395 & 2.715 & 1.135 & 3.000\\
+48 & CFST & 0.2199 & 0.3149 & 1.035 & 0.992 & 1.058 & 3.815\\
+48 & coadapt & 0.1509 & 19.89 & 1.604 & 3.786 & 2.209 & 2.535\\
+49 & CFST & 0.1859 & 0.2779 & 1.066 & 0.977 & 1.022 & 3.833\\
+49 & coadapt & 0.1217 & 19.81 & 1.348 & 3.257 & 1.440 & 2.601\\
+50 & CFST & 0.2731 & 0.3880 & 1.047 & 0.985 & 1.037 & 3.551\\
+50 & coadapt & 0.2129 & 15.65 & 1.454 & 2.067 & 1.385 & 2.535\\
+51 & CFST & 0.2047 & 0.3576 & 1.080 & 0.990 & 1.225 & 2.917\\
+51 & coadapt & 0.1444 & 14.86 & 1.377 & 1.972 & 1.320 & 2.563\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Per-seed data show that co-adaptation attains a higher soft-mixture error only on seed 42,
+whereas its worst-branch error exceeds the CFST value on all ten seeds.
+The reliability contrast is therefore not seed-dependent, while the aggregate-accuracy advantage of co-adaptation is explicit rather than hidden by averaging.
+
+\subsection{APINN per-seed results}
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Per-seed APINN results on the conservative WENO5 reference (three seeds per version).}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+Version & Seed & Soft-mixture $L_2$ & Worst-subnetwork $L_2$ & Top-1/soft ratio\\
+\midrule
+2-sub, parameter-matched & 42 & 0.2644 & 0.968 & 2.223\\
+2-sub, parameter-matched & 43 & 0.2460 & 0.824 & 2.470\\
+2-sub, parameter-matched & 44 & 0.4508 & 0.850 & 1.262\\
+2-sub, official size & 42 & 0.2235 & 2.651 & 2.331\\
+2-sub, official size & 43 & 0.3281 & 1.880 & 3.340\\
+2-sub, official size & 44 & 0.1988 & 3.270 & 3.632\\
+4-sub, parameter-matched & 42 & 0.4403 & 1.576 & 1.022\\
+4-sub, parameter-matched & 43 & 0.3662 & 1.468 & 0.989\\
+4-sub, parameter-matched & 44 & 0.3638 & 1.319 & 1.037\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\subsection{Allen--Cahn per-seed results}
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Per-seed Allen--Cahn results (seeds 42--51). ``Global branch'' evaluates the complete interface branch over the full domain; ``interface-region'' restricts it to $|u^\star|\le0.5$.}
+\begin{tabular}{clcccc}
+\toprule
+Seed & Mode & Mixture $L_2$ & Global branch $L_2$ & Interface-region $L_2$ & Interface load\\
+\midrule
+42 & CFST & 0.0362 & 1.0103 & 0.1818 & 0.0928\\
+42 & coadapt & 0.2275 & 1.2846 & 1.9226 & 0.0220\\
+43 & CFST & 0.0302 & 0.9221 & 0.1918 & 0.0897\\
+43 & coadapt & 0.6549 & 1.6199 & 4.8195 & 0.0006\\
+44 & CFST & 0.0260 & 1.1223 & 0.2028 & 0.1171\\
+44 & coadapt & 0.1728 & 1.4371 & 4.5008 & 0.0000\\
+45 & CFST & 0.0259 & 1.1141 & 0.2083 & 0.1013\\
+45 & coadapt & 1.0352 & 1.5495 & 5.1028 & 0.0000\\
+46 & CFST & 0.0398 & 1.0580 & 0.2191 & 0.1448\\
+46 & coadapt & 0.6854 & 1.4684 & 4.8656 & 0.0004\\
+47 & CFST & 0.0290 & 0.9945 & 0.2018 & 0.1434\\
+47 & coadapt & 0.0400 & 0.6666 & 2.2650 & 0.0000\\
+48 & CFST & 0.0490 & 1.1107 & 0.2028 & 0.0851\\
+48 & coadapt & 0.2733 & 1.0056 & 1.0595 & 0.0000\\
+49 & CFST & 0.0298 & 1.0639 & 0.1544 & 0.1064\\
+49 & coadapt & 0.6859 & 1.3001 & 3.9545 & 0.0000\\
+50 & CFST & 0.0353 & 1.0926 & 0.1809 & 0.0752\\
+50 & coadapt & 0.8619 & 1.2259 & 3.5773 & 0.0000\\
+51 & CFST & 0.0562 & 1.0847 & 0.4522 & 0.1450\\
+51 & coadapt & 0.2361 & 1.5905 & 2.3834 & 0.0000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{document}

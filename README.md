@@ -4,20 +4,20 @@ This repository provides code, configurations, numerical data, and processed res
 
 > **From Aggregate Accuracy to Branch Reliability: A Capability-First Training Paradigm for Mixture-of-Experts Physics-Informed Neural Networks**  
 > Xiang Li and Liping Huang  
-> Submitted to the *Journal of Scientific Computing*
+> Prepared for submission to *Computers & Mathematics with Applications*
 
 The study distinguishes accurate soft aggregation from reliable expert decomposition. It introduces a branch-reliability audit and capability-first staged training (CFST), then evaluates aggregate accuracy, complete-branch capability, gate--capability alignment, and robustness under routing interventions.
 
 ## Submission snapshot
 
-The complete submission-aligned reproducibility snapshot is available from the [JSC submission reproducibility release](https://github.com/username-a/Capability-First-Training-for-Reliable-MoE-PINNs/releases/tag/jsc-submission-v1). The release asset includes the final high-budget ten-seed Burgers results, exact weighted-error cross-term analysis, configurations, numerical reference data, and machine-readable summaries used in the manuscript.
+The complete submission-aligned reproducibility snapshot is available from the [CAMWA submission reproducibility release](https://github.com/username-a/Capability-First-Training-for-Reliable-MoE-PINNs/releases/tag/camwa-submission-v1). The release asset includes the final high-budget ten-seed Burgers results, exact weighted-error cross-term analysis, configurations, numerical reference data, and machine-readable summaries used in the manuscript.
 
 ## Repository contents
 
 - `Burger2D/`: two-dimensional Burgers and Allen--Cahn models, training and evaluation scripts, numerical references, configurations, and archived results
 - `burger1D/`: one-dimensional Burgers and KdV implementations and supporting experiments
 - `data/`: numerical data used by the included workflows
-- `paper/`: manuscript-oriented materials retained for provenance
+- `paper/`: CAMWA-formatted manuscript source, compiled manuscript, supplementary information, highlights, and figures
 
 ## Primary workflow
 

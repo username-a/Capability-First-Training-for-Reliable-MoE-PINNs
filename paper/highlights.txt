@@ -1,5 +1,7 @@
-- Mixture error alone does not certify reliable MoE--PINN branches.
-- Two composite protocols have comparable mixture error but different branch health.
-- Paired audits reveal a 37-fold contrast in worst complete-branch error.
-- Top-1 routing, gate flattening, and branch deletion expose aggregation dependence.
-- Allen--Cahn and APINN controls separate utilization, accuracy, and reliability.
+Highlights
+
+• Aggregate accuracy does not certify a reliable MoE-PINN decomposition.
+• A four-part audit separates mixture quality from complete-branch capability.
+• Gate-weighted co-adaptation creates a self-reinforcing weak-branch loop.
+• CFST forms complete-branch capability before learning the routing gate.
+• CFST reduces worst-branch error by about 64.5-fold in paired Burgers runs.
